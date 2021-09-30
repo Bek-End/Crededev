@@ -15,20 +15,21 @@ class BottomBar extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.only(
         top: 17,
-        bottom: 22,
         left: 20,
         right: 20,
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: kGrey,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),
         ),
       ),
-      child: OutlinedButtonWidget(
-        onPressed: () {},
-        title: title,
+      child: SafeArea(
+        child: OutlinedButtonWidget(
+          onPressed: () {},
+          title: title,
+        ),
       ),
     );
   }

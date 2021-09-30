@@ -1,3 +1,4 @@
+import 'package:credo_p2p/core/style/colors.dart';
 import 'package:credo_p2p/features/onboarding/ui/widgets/bottom_bar.dart';
 import 'package:credo_p2p/features/onboarding/ui/widgets/dots_indicator.dart';
 import 'package:credo_p2p/features/onboarding/ui/widgets/onboarding_headline_widget.dart';
@@ -18,6 +19,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kWhite,
       body: SafeArea(
         bottom: false,
         child: Column(
