@@ -17,6 +17,7 @@ class BottomBar extends StatelessWidget {
         top: 17,
         left: 20,
         right: 20,
+        bottom: 22,
       ),
       decoration: const BoxDecoration(
         color: kGrey,
