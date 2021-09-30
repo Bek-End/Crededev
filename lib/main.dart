@@ -1,5 +1,7 @@
 import 'package:credo_p2p/core/style/app_theme.dart';
-import 'package:credo_p2p/features/onboarding/ui/onboarding_screen.dart';
+import 'package:credo_p2p/features/login/presentation/ui/enter_code_screen.dart';
+import 'package:credo_p2p/features/login/presentation/ui/enter_phone_number_screen.dart';
+import 'package:credo_p2p/features/login/presentation/ui/enter_pincode_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,10 +17,11 @@ class MyApp extends StatelessWidget {
       title: 'Credo P2P',
       debugShowCheckedModeBanner: false,
       theme: appThemeData,
-      routes: {
-        OnboardingScreen.route: (context) => const OnboardingScreen(),
-      },
-      initialRoute: '/',
+      // routes: {
+      //   OnboardingScreen.route: (context) => const OnboardingScreen(),
+      // },
+      // initialRoute: '/',
+      home: const EnterCodeScreen(),
     );
   }
 }

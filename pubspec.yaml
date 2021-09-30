@@ -16,9 +16,17 @@ dependencies:
   
   flutter:
     sdk: flutter
-
+    
   #For rendering svg pictures
   flutter_svg: ^0.22.0
+
+  #Phone number formatter
+  mask_text_input_formatter: ^2.0.0
+
+  #For entering pin code (textfield)
+  pinput: ^1.2.0
+
+  
   
 
 dev_dependencies:
@@ -33,6 +41,7 @@ flutter:
   
   assets:
     - assets/onboarding/
+    - assets/login/
 
   fonts:
     - family: Montserrat

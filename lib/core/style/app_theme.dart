@@ -16,6 +16,11 @@ final ThemeData appThemeData = ThemeData(
       ),
     ),
   ),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      primary: kBlackLight,
+    ),
+  ),
   textTheme: const TextTheme(
     headline1: TextStyle(
       color: kBlack,
@@ -26,6 +31,11 @@ final ThemeData appThemeData = ThemeData(
       color: kBlackLight,
       fontSize: 12,
       fontWeight: FontWeight.w500,
+    ),
+    subtitle1: TextStyle(
+      color: kBlack,
+      fontSize: 10,
+      fontWeight: FontWeight.w400,
     ),
   ),
 );
