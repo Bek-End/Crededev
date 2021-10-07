@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 
 class BottomBar extends StatelessWidget {
   final String title;
+  final Function() onPressed;
   const BottomBar({
     Key? key,
     required this.title,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -28,7 +30,7 @@ class BottomBar extends StatelessWidget {
       ),
       child: SafeArea(
         child: OutlinedButtonWidget(
-          onPressed: () {},
+          onPressed: onPressed,
           title: title,
         ),
       ),

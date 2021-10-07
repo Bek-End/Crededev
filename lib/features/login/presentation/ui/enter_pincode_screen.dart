@@ -2,7 +2,6 @@ import 'package:credo_p2p/core/style/colors.dart';
 import 'package:credo_p2p/core/widgets/app_bar_widget.dart';
 import 'package:credo_p2p/features/login/presentation/ui/widgets/forgot_password_button.dart';
 import 'package:credo_p2p/features/login/presentation/ui/widgets/pincode_widget.dart';
-import 'package:credo_p2p/features/login/presentation/ui/widgets/pinput_widget.dart';
 import 'package:flutter/material.dart';
 
 class EnterPincodeScreen extends StatefulWidget {

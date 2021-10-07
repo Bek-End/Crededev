@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class EnterPhoneNumberScreen extends StatefulWidget {
+  static const route = '/EnterPhoneNumber';
   const EnterPhoneNumberScreen({Key? key}) : super(key: key);
 
   @override
