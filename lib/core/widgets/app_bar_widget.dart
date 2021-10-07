@@ -1,6 +1,6 @@
 import 'package:credo_p2p/core/style/colors.dart';
-import 'package:credo_p2p/features/login/presentation/ui/widgets/arrow_back_button.dart';
 import 'package:flutter/material.dart';
+import 'arrow_back_button.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final Function() onPressed;

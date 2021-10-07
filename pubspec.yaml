@@ -10,9 +10,15 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
+
+  #For checking internet connection
+  data_connection_checker: ^0.3.4
   
   #Onboarding screen dots
   dots_indicator: ^2.0.0
+  
+  #For checking the objects by their properties
+  equatable: ^2.0.3
   
   flutter:
     sdk: flutter
@@ -25,8 +31,6 @@ dependencies:
 
   #For entering pin code (textfield)
   pinput: ^1.2.0
-
-  
   
 
 dev_dependencies:

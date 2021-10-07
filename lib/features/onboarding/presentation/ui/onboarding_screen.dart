@@ -1,5 +1,5 @@
 import 'package:credo_p2p/core/style/colors.dart';
-import 'package:credo_p2p/features/login/presentation/ui/enter_phone_number_screen.dart';
+import 'package:credo_p2p/features/auth_remote/presentation/ui/enter_phone_number_screen.dart';
 import 'package:flutter/material.dart';
 import 'widgets/bottom_bar.dart';
 import 'widgets/dots_indicator.dart';

@@ -1,6 +1,6 @@
 import 'package:credo_p2p/core/style/app_theme.dart';
-import 'package:credo_p2p/features/login/presentation/ui/enter_phone_number_screen.dart';
 import 'package:flutter/material.dart';
+import 'features/auth_remote/presentation/ui/enter_phone_number_screen.dart';
 import 'features/onboarding/presentation/ui/onboarding_screen.dart';
 
 void main() {

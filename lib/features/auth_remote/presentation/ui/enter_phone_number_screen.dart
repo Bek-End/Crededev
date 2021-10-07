@@ -1,9 +1,10 @@
 import 'package:credo_p2p/core/style/colors.dart';
 import 'package:credo_p2p/core/widgets/app_bar_widget.dart';
 import 'package:credo_p2p/core/widgets/outlined_button.dart';
-import 'package:credo_p2p/features/login/presentation/ui/widgets/phone_number_input.dart';
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
+import 'widgets/phone_number_input.dart';
 
 class EnterPhoneNumberScreen extends StatefulWidget {
   static const route = '/EnterPhoneNumber';
