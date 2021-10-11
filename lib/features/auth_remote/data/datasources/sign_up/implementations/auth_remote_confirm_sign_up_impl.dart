@@ -4,23 +4,23 @@ import 'package:credo_p2p/core/errors/exceptions.dart';
 import 'package:credo_p2p/core/logger/logger_impl.dart';
 import 'package:credo_p2p/core/network/network_info.dart';
 import 'package:credo_p2p/core/token_model/token_model.dart';
+import 'package:credo_p2p/features/auth_remote/data/datasources/sign_up/auth_remote_confirm_sign_up.dart';
 import 'package:credo_p2p/features/auth_remote/data/models/phone_number_with_code_model.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import '../auth_remote_sign_in.dart';
 
-@LazySingleton(as: AuthRemoteSignIn)
-class AuthRemoteSignInImpl implements AuthRemoteSignIn {
+@LazySingleton(as: AuthRemoteConfirmSignUp)
+class AuthRemoteSignUpImpl implements AuthRemoteConfirmSignUp {
   final Dio dio;
-  AuthRemoteSignInImpl({
+  AuthRemoteSignUpImpl({
     required this.dio,
   });
   @override
-  Future<TokenModel> signIn({
+  Future<TokenModel> confirmSignUp({
     required final PhoneNumberWithCodeModel numberModel,
   }) async {
     try {
-      const String endPoint = "/auth/login";
+      const String endPoint = "/signup/confirm";
 
       //Adding entryPoint as a main url
 

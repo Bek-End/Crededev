@@ -5,5 +5,5 @@ abstract class AuthRemoteSignUp {
   ///Calls the https://api.credo.dev.galament.net/signup
   ///
   ///Throws [ServerException] for all error codes
-  Future<void> signUp({PhoneNumberModel numberModel});
+  Future<void> signUp({required final PhoneNumberModel numberModel});
 }

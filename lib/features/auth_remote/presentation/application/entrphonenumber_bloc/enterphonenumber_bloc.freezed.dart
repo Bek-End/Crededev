@@ -17,10 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$EnterphonenumberEventTearOff {
   const _$EnterphonenumberEventTearOff();
 
-  EnterphonenumberEventIntial initial() {
-    return const EnterphonenumberEventIntial();
-  }
-
   EnterphonenumberEventOnPressed onPressed({required String phoneNumber}) {
     return EnterphonenumberEventOnPressed(
       phoneNumber: phoneNumber,
@@ -33,43 +29,43 @@ const $EnterphonenumberEvent = _$EnterphonenumberEventTearOff();
 
 /// @nodoc
 mixin _$EnterphonenumberEvent {
+  String get phoneNumber => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function(String phoneNumber) onPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function(String phoneNumber)? onPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function(String phoneNumber)? onPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnterphonenumberEventIntial value) initial,
     required TResult Function(EnterphonenumberEventOnPressed value) onPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EnterphonenumberEventIntial value)? initial,
     TResult Function(EnterphonenumberEventOnPressed value)? onPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnterphonenumberEventIntial value)? initial,
     TResult Function(EnterphonenumberEventOnPressed value)? onPressed,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $EnterphonenumberEventCopyWith<EnterphonenumberEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -78,6 +74,7 @@ abstract class $EnterphonenumberEventCopyWith<$Res> {
   factory $EnterphonenumberEventCopyWith(EnterphonenumberEvent value,
           $Res Function(EnterphonenumberEvent) then) =
       _$EnterphonenumberEventCopyWithImpl<$Res>;
+  $Res call({String phoneNumber});
 }
 
 /// @nodoc
@@ -88,120 +85,28 @@ class _$EnterphonenumberEventCopyWithImpl<$Res>
   final EnterphonenumberEvent _value;
   // ignore: unused_field
   final $Res Function(EnterphonenumberEvent) _then;
+
+  @override
+  $Res call({
+    Object? phoneNumber = freezed,
+  }) {
+    return _then(_value.copyWith(
+      phoneNumber: phoneNumber == freezed
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class $EnterphonenumberEventIntialCopyWith<$Res> {
-  factory $EnterphonenumberEventIntialCopyWith(
-          EnterphonenumberEventIntial value,
-          $Res Function(EnterphonenumberEventIntial) then) =
-      _$EnterphonenumberEventIntialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$EnterphonenumberEventIntialCopyWithImpl<$Res>
-    extends _$EnterphonenumberEventCopyWithImpl<$Res>
-    implements $EnterphonenumberEventIntialCopyWith<$Res> {
-  _$EnterphonenumberEventIntialCopyWithImpl(EnterphonenumberEventIntial _value,
-      $Res Function(EnterphonenumberEventIntial) _then)
-      : super(_value, (v) => _then(v as EnterphonenumberEventIntial));
-
-  @override
-  EnterphonenumberEventIntial get _value =>
-      super._value as EnterphonenumberEventIntial;
-}
-
-/// @nodoc
-
-class _$EnterphonenumberEventIntial implements EnterphonenumberEventIntial {
-  const _$EnterphonenumberEventIntial();
-
-  @override
-  String toString() {
-    return 'EnterphonenumberEvent.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is EnterphonenumberEventIntial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String phoneNumber) onPressed,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String phoneNumber)? onPressed,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String phoneNumber)? onPressed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(EnterphonenumberEventIntial value) initial,
-    required TResult Function(EnterphonenumberEventOnPressed value) onPressed,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EnterphonenumberEventIntial value)? initial,
-    TResult Function(EnterphonenumberEventOnPressed value)? onPressed,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnterphonenumberEventIntial value)? initial,
-    TResult Function(EnterphonenumberEventOnPressed value)? onPressed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class EnterphonenumberEventIntial implements EnterphonenumberEvent {
-  const factory EnterphonenumberEventIntial() = _$EnterphonenumberEventIntial;
-}
-
-/// @nodoc
-abstract class $EnterphonenumberEventOnPressedCopyWith<$Res> {
+abstract class $EnterphonenumberEventOnPressedCopyWith<$Res>
+    implements $EnterphonenumberEventCopyWith<$Res> {
   factory $EnterphonenumberEventOnPressedCopyWith(
           EnterphonenumberEventOnPressed value,
           $Res Function(EnterphonenumberEventOnPressed) then) =
       _$EnterphonenumberEventOnPressedCopyWithImpl<$Res>;
+  @override
   $Res call({String phoneNumber});
 }
 
@@ -267,7 +172,6 @@ class _$EnterphonenumberEventOnPressed
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function(String phoneNumber) onPressed,
   }) {
     return onPressed(phoneNumber);
@@ -276,7 +180,6 @@ class _$EnterphonenumberEventOnPressed
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function(String phoneNumber)? onPressed,
   }) {
     return onPressed?.call(phoneNumber);
@@ -285,7 +188,6 @@ class _$EnterphonenumberEventOnPressed
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function(String phoneNumber)? onPressed,
     required TResult orElse(),
   }) {
@@ -298,7 +200,6 @@ class _$EnterphonenumberEventOnPressed
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EnterphonenumberEventIntial value) initial,
     required TResult Function(EnterphonenumberEventOnPressed value) onPressed,
   }) {
     return onPressed(this);
@@ -307,7 +208,6 @@ class _$EnterphonenumberEventOnPressed
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EnterphonenumberEventIntial value)? initial,
     TResult Function(EnterphonenumberEventOnPressed value)? onPressed,
   }) {
     return onPressed?.call(this);
@@ -316,7 +216,6 @@ class _$EnterphonenumberEventOnPressed
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EnterphonenumberEventIntial value)? initial,
     TResult Function(EnterphonenumberEventOnPressed value)? onPressed,
     required TResult orElse(),
   }) {
@@ -331,7 +230,9 @@ abstract class EnterphonenumberEventOnPressed implements EnterphonenumberEvent {
   const factory EnterphonenumberEventOnPressed({required String phoneNumber}) =
       _$EnterphonenumberEventOnPressed;
 
+  @override
   String get phoneNumber => throw _privateConstructorUsedError;
+  @override
   @JsonKey(ignore: true)
   $EnterphonenumberEventOnPressedCopyWith<EnterphonenumberEventOnPressed>
       get copyWith => throw _privateConstructorUsedError;
@@ -343,12 +244,12 @@ class _$EnterphonenumberStateTearOff {
 
   _EnterphonenumberState call(
       {required bool isSubmitting,
-      required bool noInternet,
-      required Either<Failure, None> data}) {
+      required Either<Failure, Either<None, Auth>> data,
+      required bool noInternet}) {
     return _EnterphonenumberState(
       isSubmitting: isSubmitting,
-      noInternet: noInternet,
       data: data,
+      noInternet: noInternet,
     );
   }
 }
@@ -359,8 +260,9 @@ const $EnterphonenumberState = _$EnterphonenumberStateTearOff();
 /// @nodoc
 mixin _$EnterphonenumberState {
   bool get isSubmitting => throw _privateConstructorUsedError;
+  Either<Failure, Either<None, Auth>> get data =>
+      throw _privateConstructorUsedError;
   bool get noInternet => throw _privateConstructorUsedError;
-  Either<Failure, None> get data => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EnterphonenumberStateCopyWith<EnterphonenumberState> get copyWith =>
@@ -372,7 +274,10 @@ abstract class $EnterphonenumberStateCopyWith<$Res> {
   factory $EnterphonenumberStateCopyWith(EnterphonenumberState value,
           $Res Function(EnterphonenumberState) then) =
       _$EnterphonenumberStateCopyWithImpl<$Res>;
-  $Res call({bool isSubmitting, bool noInternet, Either<Failure, None> data});
+  $Res call(
+      {bool isSubmitting,
+      Either<Failure, Either<None, Auth>> data,
+      bool noInternet});
 }
 
 /// @nodoc
@@ -387,22 +292,22 @@ class _$EnterphonenumberStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isSubmitting = freezed,
-    Object? noInternet = freezed,
     Object? data = freezed,
+    Object? noInternet = freezed,
   }) {
     return _then(_value.copyWith(
       isSubmitting: isSubmitting == freezed
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Either<Failure, Either<None, Auth>>,
       noInternet: noInternet == freezed
           ? _value.noInternet
           : noInternet // ignore: cast_nullable_to_non_nullable
               as bool,
-      data: data == freezed
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Either<Failure, None>,
     ));
   }
 }
@@ -414,7 +319,10 @@ abstract class _$EnterphonenumberStateCopyWith<$Res>
           $Res Function(_EnterphonenumberState) then) =
       __$EnterphonenumberStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isSubmitting, bool noInternet, Either<Failure, None> data});
+  $Res call(
+      {bool isSubmitting,
+      Either<Failure, Either<None, Auth>> data,
+      bool noInternet});
 }
 
 /// @nodoc
@@ -431,22 +339,22 @@ class __$EnterphonenumberStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isSubmitting = freezed,
-    Object? noInternet = freezed,
     Object? data = freezed,
+    Object? noInternet = freezed,
   }) {
     return _then(_EnterphonenumberState(
       isSubmitting: isSubmitting == freezed
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      data: data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Either<Failure, Either<None, Auth>>,
       noInternet: noInternet == freezed
           ? _value.noInternet
           : noInternet // ignore: cast_nullable_to_non_nullable
               as bool,
-      data: data == freezed
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Either<Failure, None>,
     ));
   }
 }
@@ -456,19 +364,19 @@ class __$EnterphonenumberStateCopyWithImpl<$Res>
 class _$_EnterphonenumberState implements _EnterphonenumberState {
   const _$_EnterphonenumberState(
       {required this.isSubmitting,
-      required this.noInternet,
-      required this.data});
+      required this.data,
+      required this.noInternet});
 
   @override
   final bool isSubmitting;
   @override
-  final bool noInternet;
+  final Either<Failure, Either<None, Auth>> data;
   @override
-  final Either<Failure, None> data;
+  final bool noInternet;
 
   @override
   String toString() {
-    return 'EnterphonenumberState(isSubmitting: $isSubmitting, noInternet: $noInternet, data: $data)';
+    return 'EnterphonenumberState(isSubmitting: $isSubmitting, data: $data, noInternet: $noInternet)';
   }
 
   @override
@@ -478,19 +386,19 @@ class _$_EnterphonenumberState implements _EnterphonenumberState {
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)) &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)) &&
             (identical(other.noInternet, noInternet) ||
                 const DeepCollectionEquality()
-                    .equals(other.noInternet, noInternet)) &&
-            (identical(other.data, data) ||
-                const DeepCollectionEquality().equals(other.data, data)));
+                    .equals(other.noInternet, noInternet)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(isSubmitting) ^
-      const DeepCollectionEquality().hash(noInternet) ^
-      const DeepCollectionEquality().hash(data);
+      const DeepCollectionEquality().hash(data) ^
+      const DeepCollectionEquality().hash(noInternet);
 
   @JsonKey(ignore: true)
   @override
@@ -502,15 +410,16 @@ class _$_EnterphonenumberState implements _EnterphonenumberState {
 abstract class _EnterphonenumberState implements EnterphonenumberState {
   const factory _EnterphonenumberState(
       {required bool isSubmitting,
-      required bool noInternet,
-      required Either<Failure, None> data}) = _$_EnterphonenumberState;
+      required Either<Failure, Either<None, Auth>> data,
+      required bool noInternet}) = _$_EnterphonenumberState;
 
   @override
   bool get isSubmitting => throw _privateConstructorUsedError;
   @override
-  bool get noInternet => throw _privateConstructorUsedError;
+  Either<Failure, Either<None, Auth>> get data =>
+      throw _privateConstructorUsedError;
   @override
-  Either<Failure, None> get data => throw _privateConstructorUsedError;
+  bool get noInternet => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$EnterphonenumberStateCopyWith<_EnterphonenumberState> get copyWith =>

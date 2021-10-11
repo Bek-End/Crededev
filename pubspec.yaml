@@ -34,6 +34,9 @@ dependencies:
 
   #For saving tokens locally
   flutter_secure_storage: ^4.2.1
+
+  #For loading widget
+  flutter_spinkit: ^5.1.0
     
   #For rendering svg pictures
   flutter_svg: ^0.22.0
@@ -62,7 +65,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  injectable_generator: ^1.5.2
+  
   lint: ^1.7.2
+
+  
 
 flutter:
 

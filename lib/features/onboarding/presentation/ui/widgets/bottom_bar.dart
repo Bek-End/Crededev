@@ -32,6 +32,7 @@ class BottomBar extends StatelessWidget {
         child: OutlinedButtonWidget(
           onPressed: onPressed,
           title: title,
+          enabled: true,
         ),
       ),
     );

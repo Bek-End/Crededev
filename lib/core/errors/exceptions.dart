@@ -15,3 +15,18 @@ class CacheException extends Equatable implements Exception {
   @override
   List<Object?> get props => [];
 }
+
+class TokenExpiredException extends Equatable implements Exception {
+  @override
+  List<Object?> get props => [];
+}
+
+class UserNotFoundException extends Equatable implements Exception {
+  @override
+  List<Object?> get props => [];
+}
+
+class InvalidOneTimeCodeException extends Equatable implements Exception {
+  @override
+  List<Object?> get props => [];
+}

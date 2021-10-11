@@ -7,7 +7,6 @@ import 'package:credo_p2p/features/auth_remote/data/datasources/sign_in/auth_rem
 import 'package:credo_p2p/features/auth_remote/data/models/phone_number_model.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:retry/retry.dart';
 
 @LazySingleton(as: AuthRemoteSignInRequest)
 class AuthRemoteSignInRequestImpl implements AuthRemoteSignInRequest {
@@ -24,37 +23,25 @@ class AuthRemoteSignInRequestImpl implements AuthRemoteSignInRequest {
 
       //Adding entryPoint as a main url
 
-      try {
-        dio.options.baseUrl = entryPoint;
-        await retry<void>(
-          () async {
-            final res = await dio.post(
-              endPoint,
-              data: numberModel.toJson(),
-            );
-            if (res.statusCode! >= 500) {
-              logger.e(res.data, res.statusCode);
-              throw ServerException(
-                error: '${res.statusCode}',
-                stack: '${res.data}',
-              );
-            }
-          },
-          retryIf: (e) {
-            logger.d(e);
-            return e is SocketException || e is TimeoutException;
-          },
-        ).timeout(
-          const Duration(seconds: 3),
-        );
-      } on ServerException {
-        rethrow;
-      }
-    } on DioError catch (e) {
-      throw ServerException(
-        error: '${e.response!.statusCode}',
-        stack: '${e.response!.data}',
+      dio.options.baseUrl = entryPoint;
+      final res = await dio.post(
+        endPoint,
+        data: numberModel.toJson(),
       );
+      logger.d(res.data);
+    } on DioError catch (e) {
+      logger.e(e);
+      try {
+        if (e.response!.statusCode == HttpStatus.notFound) {
+          logger.i("USER NOT FOUND");
+          throw UserNotFoundException();
+        }
+      } catch (a) {
+        throw ServerException(
+          error: 'WTF',
+          stack: '$a',
+        );
+      }
     }
   }
 }

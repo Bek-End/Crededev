@@ -6,12 +6,30 @@ abstract class Failure extends Equatable {
   const Failure();
 }
 
+class NoInternetFailure extends Failure {
+  const NoInternetFailure();
+  @override
+  List<Object?> get props => [];
+}
+
 class ServerFailure extends Failure {
+  final String error;
+  final String stack;
+
+  const ServerFailure({required final this.error, required final this.stack});
   @override
   List<Object?> get props => [];
 }
 
 class CacheFailure extends Failure {
+  const CacheFailure();
+  @override
+  List<Object?> get props => [];
+}
+
+class InvalidOneTimeCodeFailure extends Failure {
+  const InvalidOneTimeCodeFailure();
+
   @override
   List<Object?> get props => [];
 }
