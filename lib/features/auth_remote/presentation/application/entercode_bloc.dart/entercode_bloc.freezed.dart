@@ -29,6 +29,10 @@ class _$EntercodeEventTearOff {
       code: code,
     );
   }
+
+  EntercodeEventRetry retry() {
+    return const EntercodeEventRetry();
+  }
 }
 
 /// @nodoc
@@ -40,18 +44,21 @@ mixin _$EntercodeEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(Auth auth, String number) initial,
     required TResult Function(String code) onPressed,
+    required TResult Function() retry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Auth auth, String number)? initial,
     TResult Function(String code)? onPressed,
+    TResult Function()? retry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Auth auth, String number)? initial,
     TResult Function(String code)? onPressed,
+    TResult Function()? retry,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,18 +66,21 @@ mixin _$EntercodeEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(EntercodeEventInitial value) initial,
     required TResult Function(EntercodeEventOnPressed value) onPressed,
+    required TResult Function(EntercodeEventRetry value) retry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EntercodeEventInitial value)? initial,
     TResult Function(EntercodeEventOnPressed value)? onPressed,
+    TResult Function(EntercodeEventRetry value)? retry,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EntercodeEventInitial value)? initial,
     TResult Function(EntercodeEventOnPressed value)? onPressed,
+    TResult Function(EntercodeEventRetry value)? retry,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -172,6 +182,7 @@ class _$EntercodeEventInitial implements EntercodeEventInitial {
   TResult when<TResult extends Object?>({
     required TResult Function(Auth auth, String number) initial,
     required TResult Function(String code) onPressed,
+    required TResult Function() retry,
   }) {
     return initial(auth, number);
   }
@@ -181,6 +192,7 @@ class _$EntercodeEventInitial implements EntercodeEventInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Auth auth, String number)? initial,
     TResult Function(String code)? onPressed,
+    TResult Function()? retry,
   }) {
     return initial?.call(auth, number);
   }
@@ -190,6 +202,7 @@ class _$EntercodeEventInitial implements EntercodeEventInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Auth auth, String number)? initial,
     TResult Function(String code)? onPressed,
+    TResult Function()? retry,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -203,6 +216,7 @@ class _$EntercodeEventInitial implements EntercodeEventInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(EntercodeEventInitial value) initial,
     required TResult Function(EntercodeEventOnPressed value) onPressed,
+    required TResult Function(EntercodeEventRetry value) retry,
   }) {
     return initial(this);
   }
@@ -212,6 +226,7 @@ class _$EntercodeEventInitial implements EntercodeEventInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EntercodeEventInitial value)? initial,
     TResult Function(EntercodeEventOnPressed value)? onPressed,
+    TResult Function(EntercodeEventRetry value)? retry,
   }) {
     return initial?.call(this);
   }
@@ -221,6 +236,7 @@ class _$EntercodeEventInitial implements EntercodeEventInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EntercodeEventInitial value)? initial,
     TResult Function(EntercodeEventOnPressed value)? onPressed,
+    TResult Function(EntercodeEventRetry value)? retry,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -309,6 +325,7 @@ class _$EntercodeEventOnPressed implements EntercodeEventOnPressed {
   TResult when<TResult extends Object?>({
     required TResult Function(Auth auth, String number) initial,
     required TResult Function(String code) onPressed,
+    required TResult Function() retry,
   }) {
     return onPressed(code);
   }
@@ -318,6 +335,7 @@ class _$EntercodeEventOnPressed implements EntercodeEventOnPressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Auth auth, String number)? initial,
     TResult Function(String code)? onPressed,
+    TResult Function()? retry,
   }) {
     return onPressed?.call(code);
   }
@@ -327,6 +345,7 @@ class _$EntercodeEventOnPressed implements EntercodeEventOnPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Auth auth, String number)? initial,
     TResult Function(String code)? onPressed,
+    TResult Function()? retry,
     required TResult orElse(),
   }) {
     if (onPressed != null) {
@@ -340,6 +359,7 @@ class _$EntercodeEventOnPressed implements EntercodeEventOnPressed {
   TResult map<TResult extends Object?>({
     required TResult Function(EntercodeEventInitial value) initial,
     required TResult Function(EntercodeEventOnPressed value) onPressed,
+    required TResult Function(EntercodeEventRetry value) retry,
   }) {
     return onPressed(this);
   }
@@ -349,6 +369,7 @@ class _$EntercodeEventOnPressed implements EntercodeEventOnPressed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EntercodeEventInitial value)? initial,
     TResult Function(EntercodeEventOnPressed value)? onPressed,
+    TResult Function(EntercodeEventRetry value)? retry,
   }) {
     return onPressed?.call(this);
   }
@@ -358,6 +379,7 @@ class _$EntercodeEventOnPressed implements EntercodeEventOnPressed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EntercodeEventInitial value)? initial,
     TResult Function(EntercodeEventOnPressed value)? onPressed,
+    TResult Function(EntercodeEventRetry value)? retry,
     required TResult orElse(),
   }) {
     if (onPressed != null) {
@@ -375,6 +397,116 @@ abstract class EntercodeEventOnPressed implements EntercodeEvent {
   @JsonKey(ignore: true)
   $EntercodeEventOnPressedCopyWith<EntercodeEventOnPressed> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EntercodeEventRetryCopyWith<$Res> {
+  factory $EntercodeEventRetryCopyWith(
+          EntercodeEventRetry value, $Res Function(EntercodeEventRetry) then) =
+      _$EntercodeEventRetryCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$EntercodeEventRetryCopyWithImpl<$Res>
+    extends _$EntercodeEventCopyWithImpl<$Res>
+    implements $EntercodeEventRetryCopyWith<$Res> {
+  _$EntercodeEventRetryCopyWithImpl(
+      EntercodeEventRetry _value, $Res Function(EntercodeEventRetry) _then)
+      : super(_value, (v) => _then(v as EntercodeEventRetry));
+
+  @override
+  EntercodeEventRetry get _value => super._value as EntercodeEventRetry;
+}
+
+/// @nodoc
+
+class _$EntercodeEventRetry implements EntercodeEventRetry {
+  const _$EntercodeEventRetry();
+
+  @override
+  String toString() {
+    return 'EntercodeEvent.retry()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is EntercodeEventRetry);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Auth auth, String number) initial,
+    required TResult Function(String code) onPressed,
+    required TResult Function() retry,
+  }) {
+    return retry();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Auth auth, String number)? initial,
+    TResult Function(String code)? onPressed,
+    TResult Function()? retry,
+  }) {
+    return retry?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Auth auth, String number)? initial,
+    TResult Function(String code)? onPressed,
+    TResult Function()? retry,
+    required TResult orElse(),
+  }) {
+    if (retry != null) {
+      return retry();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EntercodeEventInitial value) initial,
+    required TResult Function(EntercodeEventOnPressed value) onPressed,
+    required TResult Function(EntercodeEventRetry value) retry,
+  }) {
+    return retry(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EntercodeEventInitial value)? initial,
+    TResult Function(EntercodeEventOnPressed value)? onPressed,
+    TResult Function(EntercodeEventRetry value)? retry,
+  }) {
+    return retry?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EntercodeEventInitial value)? initial,
+    TResult Function(EntercodeEventOnPressed value)? onPressed,
+    TResult Function(EntercodeEventRetry value)? retry,
+    required TResult orElse(),
+  }) {
+    if (retry != null) {
+      return retry(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EntercodeEventRetry implements EntercodeEvent {
+  const factory EntercodeEventRetry() = _$EntercodeEventRetry;
 }
 
 /// @nodoc

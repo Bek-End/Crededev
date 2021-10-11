@@ -62,15 +62,16 @@ class AuthRemoteRepoImpl extends AuthRemoteRepo {
           numberModel: number,
         );
         return right(right(Auth.signIn));
-      } on ServerException catch (e) {
-        return left(ServerFailure(error: e.error, stack: e.stack));
       } on UserNotFoundException {
         try {
+          logger.d("USER SIGNING UP");
           await signUp.signUp(numberModel: number);
           return right(right(Auth.signUp));
         } on ServerException catch (e) {
           return left(ServerFailure(error: e.error, stack: e.stack));
         }
+      } on ServerException catch (e) {
+        return left(ServerFailure(error: e.error, stack: e.stack));
       }
     }
     return left(const NoInternetFailure());

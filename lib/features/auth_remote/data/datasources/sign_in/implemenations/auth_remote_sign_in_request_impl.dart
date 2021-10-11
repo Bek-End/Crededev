@@ -37,10 +37,14 @@ class AuthRemoteSignInRequestImpl implements AuthRemoteSignInRequest {
           throw UserNotFoundException();
         }
       } catch (a) {
-        throw ServerException(
-          error: 'WTF',
-          stack: '$a',
-        );
+        if (a is UserNotFoundException) {
+          rethrow;
+        } else {
+          throw ServerException(
+            error: 'WTF',
+            stack: '$a',
+          );
+        }
       }
     }
   }

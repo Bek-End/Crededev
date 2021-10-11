@@ -88,8 +88,9 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i23.EnterWithPhoneNumber(repo: get<_i21.AuthRemoteRepo>()));
   gh.lazySingleton<_i24.EnterWithPhoneNumberAndCode>(
       () => _i24.EnterWithPhoneNumberAndCode(repo: get<_i21.AuthRemoteRepo>()));
-  gh.factory<_i25.EntercodeBloc>(
-      () => _i25.EntercodeBloc(get<_i24.EnterWithPhoneNumberAndCode>()));
+  gh.factory<_i25.EntercodeBloc>(() => _i25.EntercodeBloc(
+      get<_i24.EnterWithPhoneNumberAndCode>(),
+      get<_i23.EnterWithPhoneNumber>()));
   gh.factory<_i26.EnterphonenumberBloc>(() => _i26.EnterphonenumberBloc(
       enterWithPhoneNumber: get<_i23.EnterWithPhoneNumber>()));
   return get;

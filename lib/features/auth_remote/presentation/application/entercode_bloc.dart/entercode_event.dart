@@ -9,4 +9,5 @@ class EntercodeEvent with _$EntercodeEvent {
   const factory EntercodeEvent.onPressed({
     required final String code,
   }) = EntercodeEventOnPressed;
+  const factory EntercodeEvent.retry() = EntercodeEventRetry;
 }

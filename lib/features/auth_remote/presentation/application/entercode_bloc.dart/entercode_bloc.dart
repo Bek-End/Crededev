@@ -1,7 +1,9 @@
 import 'package:credo_p2p/core/errors/failures.dart';
 import 'package:credo_p2p/core/logger/logger_impl.dart';
 import 'package:credo_p2p/features/auth_remote/domain/entities/auth_enum.dart';
+import 'package:credo_p2p/features/auth_remote/domain/entities/phone_number.dart';
 import 'package:credo_p2p/features/auth_remote/domain/entities/phone_number_with_code.dart';
+import 'package:credo_p2p/features/auth_remote/domain/usecases/enter_with_phone_number.dart';
 import 'package:credo_p2p/features/auth_remote/domain/usecases/enter_with_phone_number_and_code.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,10 +17,12 @@ part 'entercode_state.dart';
 @injectable
 class EntercodeBloc extends Bloc<EntercodeEvent, EntercodeState> {
   final EnterWithPhoneNumberAndCode enterWithPhoneNumberAndCode;
+  final EnterWithPhoneNumber enterWithPhoneNumber;
   late final Auth auth;
   late final String number;
   EntercodeBloc(
     this.enterWithPhoneNumberAndCode,
+    this.enterWithPhoneNumber,
   ) : super(EntercodeState.initial()) {
     on<EntercodeEvent>(
       (event, emit) async {
@@ -65,6 +69,37 @@ class EntercodeBloc extends Bloc<EntercodeEvent, EntercodeState> {
                   ),
                 );
               },
+            );
+          },
+          retry: (e) async {
+            final phoneNumber = PhoneNumber(number: number);
+            final res = await enterWithPhoneNumber(
+              phoneNumber: phoneNumber,
+            );
+            logger.i(res);
+            res.fold(
+              (l) {
+                if (l is NoInternetFailure) {
+                  emit(
+                    state.copyWith(
+                      internetConnected: false,
+                    ),
+                  );
+                } else {
+                  emit(
+                    state.copyWith(
+                      internetConnected: true,
+                      data: left(l),
+                    ),
+                  );
+                }
+              },
+              (r) => emit(
+                state.copyWith(
+                  data: right(const None()),
+                  internetConnected: true,
+                ),
+              ),
             );
           },
         );

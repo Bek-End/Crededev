@@ -24,9 +24,9 @@ class EnterphonenumberBloc
           onPressed: (e) async {
             emit(state.copyWith(isSubmitting: true));
             final phoneNumber = PhoneNumber(number: e.phoneNumber);
-            logger.i("BEFORE ENTER WITH PHONE NUMBER");
-            final res =
-                await enterWithPhoneNumber.call(phoneNumber: phoneNumber);
+            final res = await enterWithPhoneNumber(
+              phoneNumber: phoneNumber,
+            );
             logger.i(res);
             res.fold(
               (l) {
