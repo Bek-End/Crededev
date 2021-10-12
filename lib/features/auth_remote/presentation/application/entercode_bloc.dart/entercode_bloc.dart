@@ -18,7 +18,7 @@ part 'entercode_state.dart';
 class EntercodeBloc extends Bloc<EntercodeEvent, EntercodeState> {
   final EnterWithPhoneNumberAndCode enterWithPhoneNumberAndCode;
   final EnterWithPhoneNumber enterWithPhoneNumber;
-  late final Auth auth;
+  late Auth auth;
   late final String number;
   EntercodeBloc(
     this.enterWithPhoneNumberAndCode,
@@ -94,12 +94,20 @@ class EntercodeBloc extends Bloc<EntercodeEvent, EntercodeState> {
                   );
                 }
               },
-              (r) => emit(
-                state.copyWith(
-                  data: right(const None()),
-                  internetConnected: true,
-                ),
-              ),
+              (r) {
+                r.fold(
+                  (l) => null,
+                  (r) {
+                    auth = r;
+                  },
+                );
+                emit(
+                  state.copyWith(
+                    data: right(const None()),
+                    internetConnected: true,
+                  ),
+                );
+              },
             );
           },
         );
