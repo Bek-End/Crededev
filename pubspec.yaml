@@ -46,6 +46,9 @@ dependencies:
   #For dependency injection
   injectable: ^1.5.0
 
+  #For pin code and face id
+  local_auth: ^1.1.8
+
   #Logger feature
   logger: ^1.1.0
 
