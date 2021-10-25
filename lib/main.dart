@@ -8,18 +8,18 @@ import 'core/bloc/pin_bloc/pin_bloc.dart';
 import 'features/auth_remote/presentation/ui/enter_phone_number_screen.dart';
 import 'injection.dart';
 
-class MyHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-  }
-}
+// class MyHttpOverrides extends HttpOverrides {
+//   @override
+//   HttpClient createHttpClient(SecurityContext? context) {
+//     return super.createHttpClient(context)
+//       ..badCertificateCallback =
+//           (X509Certificate cert, String host, int port) => true;
+//   }
+// }
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  HttpOverrides.global = MyHttpOverrides();
+  // HttpOverrides.global = MyHttpOverrides();
   configureInjection(Environment.prod);
   runApp(const MyApp());
 }
@@ -34,7 +34,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    late bool switcher;
+    late bool switcher = false;
     late bool isLoading = false;
     return BlocProvider(
       create: (context) => getIt<PinBloc>()..add(PinInitialEvent()),
@@ -50,6 +50,14 @@ class _MyAppState extends State<MyApp> {
         },
         builder: (context, state) {
           if (isLoading) {
+            return const MaterialApp(
+              home: Scaffold(
+                body: Center(
+                  child: FlutterLogo(),
+                ),
+              ),
+            );
+          } else {
             return MaterialApp(
               title: 'Credo P2P',
               debugShowCheckedModeBanner: false,
@@ -63,14 +71,6 @@ class _MyAppState extends State<MyApp> {
               home: switcher
                   ? const EnterPhoneNumberScreen()
                   : const EnterPincodeScreen(),
-            );
-          } else {
-            return const MaterialApp(
-              home: Scaffold(
-                body: Center(
-                  child: FlutterLogo(),
-                ),
-              ),
             );
           }
         },

@@ -25,6 +25,7 @@ class PhoneNumberInput extends StatelessWidget {
       child: TextField(
         cursorColor: kViolet,
         decoration: const InputDecoration(
+          hintText: '+7 (999) 999-99-99',
           border: InputBorder.none,
           enabledBorder: InputBorder.none,
           disabledBorder: InputBorder.none,

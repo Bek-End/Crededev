@@ -4,9 +4,11 @@ import 'package:pinput/pin_put/pin_put.dart';
 
 class PincodeWidget extends StatelessWidget {
   final TextEditingController controller;
+  final Function(String? data) onSubmit;
   const PincodeWidget({
     Key? key,
     required this.controller,
+    required this.onSubmit,
   }) : super(key: key);
 
   @override
@@ -15,6 +17,7 @@ class PincodeWidget extends StatelessWidget {
       fieldsCount: 4,
       obscureText: '',
       controller: controller,
+      onSubmit: onSubmit,
       fieldsAlignment: MainAxisAlignment.center,
       eachFieldConstraints: const BoxConstraints(
         maxWidth: 12,

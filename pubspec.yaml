@@ -43,6 +43,10 @@ dependencies:
 
   freezed: ^0.14.5
 
+  freezed_annotation: ^0.15.0
+
+  get_it: ^7.2.0
+
   #For dependency injection
   injectable: ^1.5.0
 

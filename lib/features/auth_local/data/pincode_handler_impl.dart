@@ -14,19 +14,19 @@ class PincodeHandlerImpl extends PincodeHandler {
   });
 
   @override
-  Future<void> changePin({required Pincode pincode}) {
+  Future<void> changePin({required final Pincode pincode}) {
     return create(pincode: pincode);
   }
 
   @override
-  Future<bool> enter({required Pincode pincode}) async {
+  Future<bool> enter({required final Pincode pincode}) async {
     final res = await secureStorage.read(key: pinCode);
     final resPin = Pincode(pin: int.parse(res!));
     return resPin == pincode;
   }
 
   @override
-  Future<void> create({required Pincode pincode}) async {
+  Future<void> create({required final Pincode pincode}) async {
     await secureStorage.delete(key: pinCode);
     await secureStorage.write(key: pinCode, value: pincode.pin.toString());
   }
@@ -38,7 +38,7 @@ class PincodeHandlerImpl extends PincodeHandler {
   }
 
   @override
-  Future<bool> enterOldPin({required Pincode pincode}) {
+  Future<bool> enterOldPin({required final Pincode pincode}) {
     return enter(pincode: pincode);
   }
 }

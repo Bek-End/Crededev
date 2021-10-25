@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 part 'pin_event.dart';
 part 'pin_state.dart';
 
-@lazySingleton
+@injectable
 class PinBloc extends Bloc<PinEvent, PinState> {
   final PincodeHandler pincodeHandler;
 
