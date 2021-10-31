@@ -22,6 +22,10 @@ class _$EnterpincodeEventTearOff {
       pincode: pincode,
     );
   }
+
+  EnterpincodeEventInitial initial() {
+    return const EnterpincodeEventInitial();
+  }
 }
 
 /// @nodoc
@@ -29,43 +33,43 @@ const $EnterpincodeEvent = _$EnterpincodeEventTearOff();
 
 /// @nodoc
 mixin _$EnterpincodeEvent {
-  Pincode get pincode => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Pincode pincode) onPressed,
+    required TResult Function() initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Pincode pincode)? onPressed,
+    TResult Function()? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Pincode pincode)? onPressed,
+    TResult Function()? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnterpincodeEventOnPressed value) onPressed,
+    required TResult Function(EnterpincodeEventInitial value) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EnterpincodeEventOnPressed value)? onPressed,
+    TResult Function(EnterpincodeEventInitial value)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnterpincodeEventOnPressed value)? onPressed,
+    TResult Function(EnterpincodeEventInitial value)? initial,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $EnterpincodeEventCopyWith<EnterpincodeEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -74,7 +78,6 @@ abstract class $EnterpincodeEventCopyWith<$Res> {
   factory $EnterpincodeEventCopyWith(
           EnterpincodeEvent value, $Res Function(EnterpincodeEvent) then) =
       _$EnterpincodeEventCopyWithImpl<$Res>;
-  $Res call({Pincode pincode});
 }
 
 /// @nodoc
@@ -85,27 +88,13 @@ class _$EnterpincodeEventCopyWithImpl<$Res>
   final EnterpincodeEvent _value;
   // ignore: unused_field
   final $Res Function(EnterpincodeEvent) _then;
-
-  @override
-  $Res call({
-    Object? pincode = freezed,
-  }) {
-    return _then(_value.copyWith(
-      pincode: pincode == freezed
-          ? _value.pincode
-          : pincode // ignore: cast_nullable_to_non_nullable
-              as Pincode,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class $EnterpincodeEventOnPressedCopyWith<$Res>
-    implements $EnterpincodeEventCopyWith<$Res> {
+abstract class $EnterpincodeEventOnPressedCopyWith<$Res> {
   factory $EnterpincodeEventOnPressedCopyWith(EnterpincodeEventOnPressed value,
           $Res Function(EnterpincodeEventOnPressed) then) =
       _$EnterpincodeEventOnPressedCopyWithImpl<$Res>;
-  @override
   $Res call({Pincode pincode});
 }
 
@@ -170,6 +159,7 @@ class _$EnterpincodeEventOnPressed implements EnterpincodeEventOnPressed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Pincode pincode) onPressed,
+    required TResult Function() initial,
   }) {
     return onPressed(pincode);
   }
@@ -178,6 +168,7 @@ class _$EnterpincodeEventOnPressed implements EnterpincodeEventOnPressed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(Pincode pincode)? onPressed,
+    TResult Function()? initial,
   }) {
     return onPressed?.call(pincode);
   }
@@ -186,6 +177,7 @@ class _$EnterpincodeEventOnPressed implements EnterpincodeEventOnPressed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Pincode pincode)? onPressed,
+    TResult Function()? initial,
     required TResult orElse(),
   }) {
     if (onPressed != null) {
@@ -198,6 +190,7 @@ class _$EnterpincodeEventOnPressed implements EnterpincodeEventOnPressed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(EnterpincodeEventOnPressed value) onPressed,
+    required TResult Function(EnterpincodeEventInitial value) initial,
   }) {
     return onPressed(this);
   }
@@ -206,6 +199,7 @@ class _$EnterpincodeEventOnPressed implements EnterpincodeEventOnPressed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(EnterpincodeEventOnPressed value)? onPressed,
+    TResult Function(EnterpincodeEventInitial value)? initial,
   }) {
     return onPressed?.call(this);
   }
@@ -214,6 +208,7 @@ class _$EnterpincodeEventOnPressed implements EnterpincodeEventOnPressed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EnterpincodeEventOnPressed value)? onPressed,
+    TResult Function(EnterpincodeEventInitial value)? initial,
     required TResult orElse(),
   }) {
     if (onPressed != null) {
@@ -227,12 +222,115 @@ abstract class EnterpincodeEventOnPressed implements EnterpincodeEvent {
   const factory EnterpincodeEventOnPressed({required Pincode pincode}) =
       _$EnterpincodeEventOnPressed;
 
-  @override
   Pincode get pincode => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   $EnterpincodeEventOnPressedCopyWith<EnterpincodeEventOnPressed>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EnterpincodeEventInitialCopyWith<$Res> {
+  factory $EnterpincodeEventInitialCopyWith(EnterpincodeEventInitial value,
+          $Res Function(EnterpincodeEventInitial) then) =
+      _$EnterpincodeEventInitialCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$EnterpincodeEventInitialCopyWithImpl<$Res>
+    extends _$EnterpincodeEventCopyWithImpl<$Res>
+    implements $EnterpincodeEventInitialCopyWith<$Res> {
+  _$EnterpincodeEventInitialCopyWithImpl(EnterpincodeEventInitial _value,
+      $Res Function(EnterpincodeEventInitial) _then)
+      : super(_value, (v) => _then(v as EnterpincodeEventInitial));
+
+  @override
+  EnterpincodeEventInitial get _value =>
+      super._value as EnterpincodeEventInitial;
+}
+
+/// @nodoc
+
+class _$EnterpincodeEventInitial implements EnterpincodeEventInitial {
+  const _$EnterpincodeEventInitial();
+
+  @override
+  String toString() {
+    return 'EnterpincodeEvent.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is EnterpincodeEventInitial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Pincode pincode) onPressed,
+    required TResult Function() initial,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Pincode pincode)? onPressed,
+    TResult Function()? initial,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Pincode pincode)? onPressed,
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EnterpincodeEventOnPressed value) onPressed,
+    required TResult Function(EnterpincodeEventInitial value) initial,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EnterpincodeEventOnPressed value)? onPressed,
+    TResult Function(EnterpincodeEventInitial value)? initial,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EnterpincodeEventOnPressed value)? onPressed,
+    TResult Function(EnterpincodeEventInitial value)? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnterpincodeEventInitial implements EnterpincodeEvent {
+  const factory EnterpincodeEventInitial() = _$EnterpincodeEventInitial;
 }
 
 /// @nodoc
@@ -242,11 +340,13 @@ class _$EnterpincodeStateTearOff {
   _EnterpincodeState call(
       {required bool showError,
       required bool isOK,
-      required bool isSubmitting}) {
+      required bool isSubmitting,
+      required bool checkBioMetric}) {
     return _EnterpincodeState(
       showError: showError,
       isOK: isOK,
       isSubmitting: isSubmitting,
+      checkBioMetric: checkBioMetric,
     );
   }
 }
@@ -259,6 +359,7 @@ mixin _$EnterpincodeState {
   bool get showError => throw _privateConstructorUsedError;
   bool get isOK => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
+  bool get checkBioMetric => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EnterpincodeStateCopyWith<EnterpincodeState> get copyWith =>
@@ -270,7 +371,8 @@ abstract class $EnterpincodeStateCopyWith<$Res> {
   factory $EnterpincodeStateCopyWith(
           EnterpincodeState value, $Res Function(EnterpincodeState) then) =
       _$EnterpincodeStateCopyWithImpl<$Res>;
-  $Res call({bool showError, bool isOK, bool isSubmitting});
+  $Res call(
+      {bool showError, bool isOK, bool isSubmitting, bool checkBioMetric});
 }
 
 /// @nodoc
@@ -287,6 +389,7 @@ class _$EnterpincodeStateCopyWithImpl<$Res>
     Object? showError = freezed,
     Object? isOK = freezed,
     Object? isSubmitting = freezed,
+    Object? checkBioMetric = freezed,
   }) {
     return _then(_value.copyWith(
       showError: showError == freezed
@@ -301,6 +404,10 @@ class _$EnterpincodeStateCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      checkBioMetric: checkBioMetric == freezed
+          ? _value.checkBioMetric
+          : checkBioMetric // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -312,7 +419,8 @@ abstract class _$EnterpincodeStateCopyWith<$Res>
           _EnterpincodeState value, $Res Function(_EnterpincodeState) then) =
       __$EnterpincodeStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool showError, bool isOK, bool isSubmitting});
+  $Res call(
+      {bool showError, bool isOK, bool isSubmitting, bool checkBioMetric});
 }
 
 /// @nodoc
@@ -331,6 +439,7 @@ class __$EnterpincodeStateCopyWithImpl<$Res>
     Object? showError = freezed,
     Object? isOK = freezed,
     Object? isSubmitting = freezed,
+    Object? checkBioMetric = freezed,
   }) {
     return _then(_EnterpincodeState(
       showError: showError == freezed
@@ -345,6 +454,10 @@ class __$EnterpincodeStateCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
+      checkBioMetric: checkBioMetric == freezed
+          ? _value.checkBioMetric
+          : checkBioMetric // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -355,7 +468,8 @@ class _$_EnterpincodeState implements _EnterpincodeState {
   const _$_EnterpincodeState(
       {required this.showError,
       required this.isOK,
-      required this.isSubmitting});
+      required this.isSubmitting,
+      required this.checkBioMetric});
 
   @override
   final bool showError;
@@ -363,10 +477,12 @@ class _$_EnterpincodeState implements _EnterpincodeState {
   final bool isOK;
   @override
   final bool isSubmitting;
+  @override
+  final bool checkBioMetric;
 
   @override
   String toString() {
-    return 'EnterpincodeState(showError: $showError, isOK: $isOK, isSubmitting: $isSubmitting)';
+    return 'EnterpincodeState(showError: $showError, isOK: $isOK, isSubmitting: $isSubmitting, checkBioMetric: $checkBioMetric)';
   }
 
   @override
@@ -380,7 +496,10 @@ class _$_EnterpincodeState implements _EnterpincodeState {
                 const DeepCollectionEquality().equals(other.isOK, isOK)) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
-                    .equals(other.isSubmitting, isSubmitting)));
+                    .equals(other.isSubmitting, isSubmitting)) &&
+            (identical(other.checkBioMetric, checkBioMetric) ||
+                const DeepCollectionEquality()
+                    .equals(other.checkBioMetric, checkBioMetric)));
   }
 
   @override
@@ -388,7 +507,8 @@ class _$_EnterpincodeState implements _EnterpincodeState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(showError) ^
       const DeepCollectionEquality().hash(isOK) ^
-      const DeepCollectionEquality().hash(isSubmitting);
+      const DeepCollectionEquality().hash(isSubmitting) ^
+      const DeepCollectionEquality().hash(checkBioMetric);
 
   @JsonKey(ignore: true)
   @override
@@ -400,7 +520,8 @@ abstract class _EnterpincodeState implements EnterpincodeState {
   const factory _EnterpincodeState(
       {required bool showError,
       required bool isOK,
-      required bool isSubmitting}) = _$_EnterpincodeState;
+      required bool isSubmitting,
+      required bool checkBioMetric}) = _$_EnterpincodeState;
 
   @override
   bool get showError => throw _privateConstructorUsedError;
@@ -408,6 +529,8 @@ abstract class _EnterpincodeState implements EnterpincodeState {
   bool get isOK => throw _privateConstructorUsedError;
   @override
   bool get isSubmitting => throw _privateConstructorUsedError;
+  @override
+  bool get checkBioMetric => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$EnterpincodeStateCopyWith<_EnterpincodeState> get copyWith =>

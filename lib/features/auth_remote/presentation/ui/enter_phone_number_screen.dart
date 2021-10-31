@@ -2,7 +2,7 @@ import 'package:credo_p2p/core/errors/failures.dart';
 import 'package:credo_p2p/core/logger/logger_impl.dart';
 import 'package:credo_p2p/core/style/colors.dart';
 import 'package:credo_p2p/core/widgets/app_bar_widget.dart';
-import 'package:credo_p2p/core/widgets/outlined_button.dart';
+import 'package:credo_p2p/core/widgets/round_button.dart';
 import 'package:credo_p2p/core/widgets/snackbars.dart';
 import 'package:credo_p2p/features/auth_remote/presentation/application/entrphonenumber_bloc/enterphonenumber_bloc.dart';
 import 'package:credo_p2p/features/auth_remote/presentation/ui/enter_code_screen.dart';
@@ -107,7 +107,7 @@ class _EnterPhoneNumberScreenState extends State<EnterPhoneNumberScreen> {
                         bottom: 9,
                       ),
                       width: double.infinity,
-                      child: OutlinedButtonWidget(
+                      child: RoundButtonWidget(
                         title: 'Отправить',
                         onPressed: () {
                           context.read<EnterphonenumberBloc>().add(

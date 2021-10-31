@@ -1,5 +1,10 @@
 part of 'entercode_bloc.dart';
 
+enum Screens {
+  mainPage,
+  createPinCode,
+}
+
 @freezed
 class EntercodeState with _$EntercodeState {
   const factory EntercodeState({
@@ -8,6 +13,7 @@ class EntercodeState with _$EntercodeState {
     required final bool internetConnected,
     required final bool done,
     required final bool wrongCode,
+    required final Screens screens,
   }) = _EntercodeState;
   factory EntercodeState.initial() => EntercodeState(
         isSumitting: false,
@@ -17,5 +23,6 @@ class EntercodeState with _$EntercodeState {
         ),
         done: false,
         wrongCode: false,
+        screens: Screens.createPinCode,
       );
 }

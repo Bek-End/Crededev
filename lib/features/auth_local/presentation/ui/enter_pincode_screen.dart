@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:credo_p2p/core/logger/logger_impl.dart';
 import 'package:credo_p2p/core/style/colors.dart';
 import 'package:credo_p2p/core/widgets/app_bar_widget.dart';
@@ -5,17 +7,19 @@ import 'package:credo_p2p/features/auth_local/data/local_authentication_service.
 import 'package:credo_p2p/features/auth_local/domain/pincode.dart';
 import 'package:credo_p2p/features/auth_local/presentation/application/enter_pincode_bloc/enterpincode_bloc.dart';
 import 'package:credo_p2p/features/auth_remote/presentation/ui/enter_phone_number_screen.dart';
+import 'package:credo_p2p/features/main_page/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../injection.dart';
 import 'widgets/forgot_password_button.dart';
 import 'widgets/pincode_widget.dart';
 import 'widgets/snack_widget.dart';
 
+// ignore: must_be_immutable
 class EnterPincodeScreen extends StatefulWidget {
-  const EnterPincodeScreen({Key? key}) : super(key: key);
-
+  bool bioOnetime = true;
   @override
   _EnterPincodeScreenState createState() => _EnterPincodeScreenState();
 }
@@ -25,32 +29,48 @@ class _EnterPincodeScreenState extends State<EnterPincodeScreen> {
   final LocalAuthenticationService localAuthentication =
       getIt<LocalAuthenticationService>();
   bool showError = false;
-  bool checkBioMetricOneTime = true;
 
-  @override
-  Future<void> didChangeDependencies() async {
-    super.didChangeDependencies();
-    if (checkBioMetricOneTime) {
-      if (await localAuthentication.hasBiometrics()) {
-        if (await localAuthentication.authenticate()) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const EnterPhoneNumberScreen(),
-            ),
-          );
-        }
+  Future<void> setUpBiometric(BuildContext context) async {
+    if (await localAuthentication.hasBiometrics()) {
+      if (await localAuthentication.authenticate()) {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const MainPage(),
+          ),
+        );
       }
     }
-    checkBioMetricOneTime = false;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback(
+      (_) {
+        if (mounted) {
+          setUpBiometric(context);
+        }
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<EnterpincodeBloc>(),
+      create: (context) => getIt<EnterpincodeBloc>()
+        ..add(
+          const EnterpincodeEvent.initial(),
+        ),
       child: BlocConsumer<EnterpincodeBloc, EnterpincodeState>(
         listener: (context, state) {
-          logger.i("LISTENING");
+          if (state.checkBioMetric) {
+            // setUpBiometric();
+          }
           if (state.showError) {
             showError = true;
           }
@@ -58,7 +78,7 @@ class _EnterPincodeScreenState extends State<EnterPincodeScreen> {
             showError = false;
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const EnterPhoneNumberScreen(),
+                builder: (context) => const MainPage(),
               ),
             );
           }
@@ -110,16 +130,21 @@ class _EnterPincodeScreenState extends State<EnterPincodeScreen> {
               ],
             ),
             floatingActionButton: IconButton(
-              icon: SvgPicture.asset(
-                'assets/login/fingerprint-svgrepo-com.svg',
-                color: kViolet,
-              ),
+              icon: Platform.isAndroid
+                  ? SvgPicture.asset(
+                      'assets/login/fingerprint-svgrepo-com.svg',
+                      color: kViolet,
+                    )
+                  : SvgPicture.asset(
+                      'assets/login/faceid.svg',
+                      color: kViolet,
+                    ),
               onPressed: () async {
                 if (await localAuthentication.hasBiometrics()) {
                   if (await localAuthentication.authenticate()) {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const EnterPhoneNumberScreen(),
+                        builder: (context) => const MainPage(),
                       ),
                     );
                   }

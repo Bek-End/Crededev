@@ -1,5 +1,6 @@
 import 'package:credo_p2p/core/errors/failures.dart';
 import 'package:credo_p2p/core/logger/logger_impl.dart';
+import 'package:credo_p2p/features/auth_local/domain/pincode_handler.dart';
 import 'package:credo_p2p/features/auth_remote/domain/entities/auth_enum.dart';
 import 'package:credo_p2p/features/auth_remote/domain/entities/phone_number.dart';
 import 'package:credo_p2p/features/auth_remote/domain/entities/phone_number_with_code.dart';
@@ -20,9 +21,11 @@ class EntercodeBloc extends Bloc<EntercodeEvent, EntercodeState> {
   final EnterWithPhoneNumber enterWithPhoneNumber;
   late Auth auth;
   late final String number;
+  final PincodeHandler pincodeHandler;
   EntercodeBloc(
     this.enterWithPhoneNumberAndCode,
     this.enterWithPhoneNumber,
+    this.pincodeHandler,
   ) : super(EntercodeState.initial()) {
     on<EntercodeEvent>(
       (event, emit) async {
@@ -39,7 +42,7 @@ class EntercodeBloc extends Bloc<EntercodeEvent, EntercodeState> {
               phoneNumberWithCode: phoneCode,
               auth: auth,
             );
-            res.fold(
+            await res.fold(
               (l) {
                 if (l is NoInternetFailure) {
                   emit(
@@ -59,13 +62,15 @@ class EntercodeBloc extends Bloc<EntercodeEvent, EntercodeState> {
                   );
                 }
               },
-              (r) {
+              (r) async {
+                final hasPin = await pincodeHandler.hasPin();
                 emit(
                   state.copyWith(
                     isSumitting: false,
                     data: res,
                     done: true,
                     wrongCode: false,
+                    screens: hasPin ? Screens.mainPage : Screens.createPinCode,
                   ),
                 );
               },

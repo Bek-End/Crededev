@@ -97,7 +97,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i26.CreatepincodeBloc(get<_i9.PincodeHandler>()));
   gh.factory<_i27.EnterpincodeBloc>(
       () => _i27.EnterpincodeBloc(get<_i9.PincodeHandler>()));
-  gh.factory<_i28.PinBloc>(() => _i28.PinBloc(get<_i9.PincodeHandler>()));
+  gh.factory<_i28.PinBloc>(
+      () => _i28.PinBloc(get<_i9.PincodeHandler>(), get<_i12.TokenHandler>()));
   gh.lazySingleton<_i29.AuthRemoteRepo>(() => _i30.AuthRemoteRepoImpl(
       networkInfo: get<_i7.NetworkInfo>(),
       tokenHandler: get<_i12.TokenHandler>(),
@@ -113,7 +114,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i32.EnterWithPhoneNumberAndCode(repo: get<_i29.AuthRemoteRepo>()));
   gh.factory<_i33.EntercodeBloc>(() => _i33.EntercodeBloc(
       get<_i32.EnterWithPhoneNumberAndCode>(),
-      get<_i31.EnterWithPhoneNumber>()));
+      get<_i31.EnterWithPhoneNumber>(),
+      get<_i9.PincodeHandler>()));
   gh.factory<_i34.EnterphonenumberBloc>(() => _i34.EnterphonenumberBloc(
       enterWithPhoneNumber: get<_i31.EnterWithPhoneNumber>()));
   return get;

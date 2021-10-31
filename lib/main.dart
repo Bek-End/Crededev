@@ -1,11 +1,12 @@
-import 'dart:io';
 import 'package:credo_p2p/core/style/app_theme.dart';
 import 'package:credo_p2p/features/auth_local/presentation/ui/enter_pincode_screen.dart';
+import 'package:credo_p2p/features/auth_remote/presentation/ui/enter_phone_number_screen.dart';
+import 'package:credo_p2p/features/main_page/main_page.dart';
+import 'package:credo_p2p/features/onboarding/presentation/ui/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'core/bloc/pin_bloc/pin_bloc.dart';
-import 'features/auth_remote/presentation/ui/enter_phone_number_screen.dart';
 import 'injection.dart';
 
 // class MyHttpOverrides extends HttpOverrides {
@@ -34,7 +35,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    late bool switcher = false;
+    late bool hasPin = false;
+    late bool hasToken = false;
     late bool isLoading = false;
     return BlocProvider(
       create: (context) => getIt<PinBloc>()..add(PinInitialEvent()),
@@ -44,16 +46,20 @@ class _MyAppState extends State<MyApp> {
             isLoading = true;
           }
           if (state is PinDataState) {
-            switcher = state.hasPin;
+            hasPin = state.hasPin;
+            hasToken = state.hasToken;
             isLoading = false;
           }
         },
         builder: (context, state) {
           if (isLoading) {
             return const MaterialApp(
+              debugShowCheckedModeBanner: false,
               home: Scaffold(
                 body: Center(
-                  child: FlutterLogo(),
+                  child: FlutterLogo(
+                    size: 216,
+                  ),
                 ),
               ),
             );
@@ -68,9 +74,12 @@ class _MyAppState extends State<MyApp> {
               //       const EnterPhoneNumberScreen()
               // },
               // initialRoute: '/',
-              home: switcher
-                  ? const EnterPhoneNumberScreen()
-                  : const EnterPincodeScreen(),
+              // home: hasToken
+              //     ? hasPin
+              //         ? EnterPincodeScreen()
+              //         : const EnterPhoneNumberScreen()
+              //     : const OnboardingScreen(),
+              home: const MainPage(),
             );
           }
         },

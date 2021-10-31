@@ -13,7 +13,7 @@ class LocalAuthenticationService {
 
   Future<bool> hasBiometrics() async {
     try {
-      return await auth.canCheckBiometrics;
+      return auth.canCheckBiometrics;
     } on PlatformException catch (e) {
       logger.e(e.details);
       return false;
@@ -23,7 +23,7 @@ class LocalAuthenticationService {
   Future<bool> authenticate() async {
     if (await hasBiometrics()) {
       try {
-        return await auth.authenticate(
+        return auth.authenticate(
           localizedReason: 'Authenticate to access',
           biometricOnly: true,
           stickyAuth: true,

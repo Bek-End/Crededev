@@ -11,8 +11,10 @@ class PinInitial extends PinState {}
 
 class PinDataState extends PinState {
   final bool hasPin;
+  final bool hasToken;
   const PinDataState({
     required this.hasPin,
+    required this.hasToken,
   });
 }
 

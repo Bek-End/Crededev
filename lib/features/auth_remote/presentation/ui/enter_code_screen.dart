@@ -3,10 +3,11 @@ import 'package:credo_p2p/core/logger/logger_impl.dart';
 import 'package:credo_p2p/core/style/colors.dart';
 import 'package:credo_p2p/core/widgets/app_bar_widget.dart';
 import 'package:credo_p2p/core/widgets/snackbars.dart';
-import 'package:credo_p2p/features/auth_local/presentation/ui/enter_pincode_screen.dart';
+import 'package:credo_p2p/features/auth_local/presentation/ui/create_pincode_screen.dart';
 import 'package:credo_p2p/features/auth_remote/domain/entities/auth_enum.dart';
 import 'package:credo_p2p/features/auth_remote/presentation/application/entercode_bloc.dart/entercode_bloc.dart';
 import 'package:credo_p2p/features/auth_remote/presentation/ui/widgets/retry_code_widget.dart';
+import 'package:credo_p2p/features/main_page/main_page.dart';
 import 'package:credo_p2p/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,12 +50,22 @@ class _EnterCodeScreenState extends State<EnterCodeScreen> {
             );
           }
           if (state.done) {
-            logger.i("EVERYTHING DONE");
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const EnterPincodeScreen(),
-              ),
-            );
+            switch (state.screens) {
+              case Screens.mainPage:
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const MainPage(),
+                  ),
+                );
+                break;
+              case Screens.createPinCode:
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const CreatePincodeScreen(),
+                  ),
+                );
+                break;
+            }
           }
           if (state.wrongCode) {
             ScaffoldMessenger.of(context).showSnackBar(

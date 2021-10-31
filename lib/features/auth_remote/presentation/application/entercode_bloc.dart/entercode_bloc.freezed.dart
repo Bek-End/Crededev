@@ -518,13 +518,15 @@ class _$EntercodeStateTearOff {
       required Either<Failure, None> data,
       required bool internetConnected,
       required bool done,
-      required bool wrongCode}) {
+      required bool wrongCode,
+      required Screens screens}) {
     return _EntercodeState(
       isSumitting: isSumitting,
       data: data,
       internetConnected: internetConnected,
       done: done,
       wrongCode: wrongCode,
+      screens: screens,
     );
   }
 }
@@ -539,6 +541,7 @@ mixin _$EntercodeState {
   bool get internetConnected => throw _privateConstructorUsedError;
   bool get done => throw _privateConstructorUsedError;
   bool get wrongCode => throw _privateConstructorUsedError;
+  Screens get screens => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntercodeStateCopyWith<EntercodeState> get copyWith =>
@@ -555,7 +558,8 @@ abstract class $EntercodeStateCopyWith<$Res> {
       Either<Failure, None> data,
       bool internetConnected,
       bool done,
-      bool wrongCode});
+      bool wrongCode,
+      Screens screens});
 }
 
 /// @nodoc
@@ -574,6 +578,7 @@ class _$EntercodeStateCopyWithImpl<$Res>
     Object? internetConnected = freezed,
     Object? done = freezed,
     Object? wrongCode = freezed,
+    Object? screens = freezed,
   }) {
     return _then(_value.copyWith(
       isSumitting: isSumitting == freezed
@@ -596,6 +601,10 @@ class _$EntercodeStateCopyWithImpl<$Res>
           ? _value.wrongCode
           : wrongCode // ignore: cast_nullable_to_non_nullable
               as bool,
+      screens: screens == freezed
+          ? _value.screens
+          : screens // ignore: cast_nullable_to_non_nullable
+              as Screens,
     ));
   }
 }
@@ -612,7 +621,8 @@ abstract class _$EntercodeStateCopyWith<$Res>
       Either<Failure, None> data,
       bool internetConnected,
       bool done,
-      bool wrongCode});
+      bool wrongCode,
+      Screens screens});
 }
 
 /// @nodoc
@@ -633,6 +643,7 @@ class __$EntercodeStateCopyWithImpl<$Res>
     Object? internetConnected = freezed,
     Object? done = freezed,
     Object? wrongCode = freezed,
+    Object? screens = freezed,
   }) {
     return _then(_EntercodeState(
       isSumitting: isSumitting == freezed
@@ -655,6 +666,10 @@ class __$EntercodeStateCopyWithImpl<$Res>
           ? _value.wrongCode
           : wrongCode // ignore: cast_nullable_to_non_nullable
               as bool,
+      screens: screens == freezed
+          ? _value.screens
+          : screens // ignore: cast_nullable_to_non_nullable
+              as Screens,
     ));
   }
 }
@@ -667,7 +682,8 @@ class _$_EntercodeState implements _EntercodeState {
       required this.data,
       required this.internetConnected,
       required this.done,
-      required this.wrongCode});
+      required this.wrongCode,
+      required this.screens});
 
   @override
   final bool isSumitting;
@@ -679,10 +695,12 @@ class _$_EntercodeState implements _EntercodeState {
   final bool done;
   @override
   final bool wrongCode;
+  @override
+  final Screens screens;
 
   @override
   String toString() {
-    return 'EntercodeState(isSumitting: $isSumitting, data: $data, internetConnected: $internetConnected, done: $done, wrongCode: $wrongCode)';
+    return 'EntercodeState(isSumitting: $isSumitting, data: $data, internetConnected: $internetConnected, done: $done, wrongCode: $wrongCode, screens: $screens)';
   }
 
   @override
@@ -701,7 +719,9 @@ class _$_EntercodeState implements _EntercodeState {
                 const DeepCollectionEquality().equals(other.done, done)) &&
             (identical(other.wrongCode, wrongCode) ||
                 const DeepCollectionEquality()
-                    .equals(other.wrongCode, wrongCode)));
+                    .equals(other.wrongCode, wrongCode)) &&
+            (identical(other.screens, screens) ||
+                const DeepCollectionEquality().equals(other.screens, screens)));
   }
 
   @override
@@ -711,7 +731,8 @@ class _$_EntercodeState implements _EntercodeState {
       const DeepCollectionEquality().hash(data) ^
       const DeepCollectionEquality().hash(internetConnected) ^
       const DeepCollectionEquality().hash(done) ^
-      const DeepCollectionEquality().hash(wrongCode);
+      const DeepCollectionEquality().hash(wrongCode) ^
+      const DeepCollectionEquality().hash(screens);
 
   @JsonKey(ignore: true)
   @override
@@ -725,7 +746,8 @@ abstract class _EntercodeState implements EntercodeState {
       required Either<Failure, None> data,
       required bool internetConnected,
       required bool done,
-      required bool wrongCode}) = _$_EntercodeState;
+      required bool wrongCode,
+      required Screens screens}) = _$_EntercodeState;
 
   @override
   bool get isSumitting => throw _privateConstructorUsedError;
@@ -737,6 +759,8 @@ abstract class _EntercodeState implements EntercodeState {
   bool get done => throw _privateConstructorUsedError;
   @override
   bool get wrongCode => throw _privateConstructorUsedError;
+  @override
+  Screens get screens => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$EntercodeStateCopyWith<_EntercodeState> get copyWith =>

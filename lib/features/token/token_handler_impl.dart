@@ -32,4 +32,10 @@ class TokenHandlerImpl implements TokenHandler {
     final data = token.toJson().toString();
     await secureStorage.write(key: tokenSecureStorage, value: data);
   }
+
+  @override
+  Future<bool> hasToken() async {
+    final res = await secureStorage.read(key: tokenSecureStorage);
+    return res != null;
+  }
 }

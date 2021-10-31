@@ -1,5 +1,5 @@
 import 'package:credo_p2p/core/style/colors.dart';
-import 'package:credo_p2p/core/widgets/outlined_button.dart';
+import 'package:credo_p2p/core/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 
 class BottomBar extends StatelessWidget {
@@ -29,7 +29,7 @@ class BottomBar extends StatelessWidget {
         ),
       ),
       child: SafeArea(
-        child: OutlinedButtonWidget(
+        child: RoundButtonWidget(
           onPressed: onPressed,
           title: title,
           enabled: true,

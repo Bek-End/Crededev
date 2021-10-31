@@ -78,8 +78,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             BottomBar(
               title: canSckip ? 'Пропустить' : 'Начать',
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(
-                  EnterPhoneNumberScreen.route,
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => const EnterPhoneNumberScreen(),
+                  ),
                 );
               },
             ),

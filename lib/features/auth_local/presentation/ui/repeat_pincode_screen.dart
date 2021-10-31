@@ -4,6 +4,7 @@ import 'package:credo_p2p/features/auth_local/domain/pincode.dart';
 import 'package:credo_p2p/features/auth_local/presentation/application/repeat_pincode_bloc/repeatpincode_bloc.dart';
 import 'package:credo_p2p/features/auth_local/presentation/ui/widgets/snack_widget.dart';
 import 'package:credo_p2p/features/auth_remote/presentation/ui/enter_phone_number_screen.dart';
+import 'package:credo_p2p/features/main_page/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../injection.dart';
@@ -31,7 +32,7 @@ class _RepeatPincodeScreenState extends State<RepeatPincodeScreen> {
           if (state.isok) {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const EnterPhoneNumberScreen(),
+                builder: (context) => const MainPage(),
               ),
             );
           }

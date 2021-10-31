@@ -2,11 +2,11 @@ import 'package:credo_p2p/core/style/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class OutlinedButtonWidget extends StatelessWidget {
+class RoundButtonWidget extends StatelessWidget {
   final String title;
   final bool enabled;
   final Function() onPressed;
-  const OutlinedButtonWidget({
+  const RoundButtonWidget({
     Key? key,
     required this.title,
     required this.enabled,
@@ -24,6 +24,7 @@ class OutlinedButtonWidget extends StatelessWidget {
           fontWeight: FontWeight.w600,
         ),
         primary: kViolet,
+        elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),

@@ -6,10 +6,12 @@ class EnterpincodeState with _$EnterpincodeState {
     required final bool showError,
     required final bool isOK,
     required final bool isSubmitting,
+    required final bool checkBioMetric,
   }) = _EnterpincodeState;
   factory EnterpincodeState.initial() => const EnterpincodeState(
         showError: false,
         isOK: false,
         isSubmitting: false,
+        checkBioMetric: false,
       );
 }
