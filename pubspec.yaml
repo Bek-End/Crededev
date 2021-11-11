@@ -28,12 +28,13 @@ dependencies:
   
   #For checking the objects by their properties
   equatable: ^2.0.3
+  expandable: ^5.0.1
   
   flutter:
     sdk: flutter
 
   #Main business logic handler
-  flutter_bloc: ^7.3.0
+  flutter_bloc: ^7.3.3
 
   #For saving tokens locally
   flutter_secure_storage: ^4.2.1

@@ -3,24 +3,29 @@ import 'package:credo_p2p/core/widgets/round_button.dart';
 import 'package:credo_p2p/features/main_page/core/widgets/hide_widget.dart';
 import 'package:credo_p2p/features/main_page/core/widgets/loan_button_widget.dart';
 import 'package:credo_p2p/features/main_page/core/widgets/money_card_widget.dart';
-import 'package:credo_p2p/features/main_page/give_loan/widgets/give_loan_card_widget.dart';
-import 'package:credo_p2p/features/main_page/give_loan/widgets/sort_bottom_sheet/bottom_sheet_button.dart';
-import 'package:credo_p2p/features/main_page/give_loan/widgets/sort_bottom_sheet/sort_bottom_sheet_widget.dart';
-import 'package:credo_p2p/features/main_page/receive_loan/data/filter_model.dart';
-import 'package:credo_p2p/features/main_page/receive_loan/widgets/filter_bottom_sheet/filter_bottom_sheet_widget.dart';
-import 'package:credo_p2p/features/main_page/receive_loan/widgets/sort_bottom_sheet/bottom_sheet_button.dart';
+import 'package:credo_p2p/features/main_page/receive_loan/create_loan/ui/create_loan_screen.dart';
+import 'package:credo_p2p/features/main_page/receive_loan/quick_loan/ui/quick_loan_screen.dart';
+import 'package:credo_p2p/features/main_page/receive_loan/receive_loan_main_page/data/filter_model.dart';
+import 'package:credo_p2p/features/main_page/receive_loan/receive_loan_main_page/widgets/filter_bottom_sheet/filter_bottom_sheet_widget.dart';
+import 'package:credo_p2p/features/main_page/core/widgets/loan_console.dart';
+import 'package:credo_p2p/features/main_page/receive_loan/receive_loan_main_page/widgets/receive_loan_card_widget.dart';
+import 'package:credo_p2p/features/main_page/receive_loan/receive_loan_main_page/widgets/sort_bottom_sheet/bottom_sheet_button.dart';
+import 'package:credo_p2p/features/main_page/receive_loan/receive_loan_main_page/widgets/sort_bottom_sheet/sort_bottom_sheet_widget.dart';
 import 'package:flutter/material.dart';
 
-class GiveLoanScreen extends StatefulWidget {
-  const GiveLoanScreen({Key? key}) : super(key: key);
+class ReceiveLoanScreen extends StatefulWidget {
+  const ReceiveLoanScreen({Key? key}) : super(key: key);
 
   @override
-  _GiveLoanScreenState createState() => _GiveLoanScreenState();
+  _ReceiveLoanScreenState createState() => _ReceiveLoanScreenState();
 }
 
-class _GiveLoanScreenState extends State<GiveLoanScreen> with AutomaticKeepAliveClientMixin{
+class _ReceiveLoanScreenState extends State<ReceiveLoanScreen>
+    with AutomaticKeepAliveClientMixin {
+  bool showConsole = true;
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ListView(
       padding: const EdgeInsets.only(
         top: 5,
@@ -33,65 +38,36 @@ class _GiveLoanScreenState extends State<GiveLoanScreen> with AutomaticKeepAlive
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
-                  'Мои инвестиции',
+              children: [
+                const Text(
+                  'Мои займы',
                   style: TextStyle(
                     color: kBlack,
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                HideWidget(title: 'Свернуть')
+                HideWidget(
+                  title: 'Свернуть',
+                  toogle: (e) {
+                    setState(() {
+                      showConsole = e;
+                    });
+                  },
+                )
               ],
             ),
             const SizedBox(
               height: 8,
             ),
-            Column(
-              children: [
-                Row(
-                  children: const [
-                    Expanded(
-                      child: MoneyCardWidget(
-                        title: "291 000р",
-                        subtitle: "Инвестировано",
-                      ),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Expanded(
-                      child: MoneyCardWidget(
-                        title: "29 000р",
-                        subtitle: "Будущая выплата",
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Row(
-                  children: const [
-                    Expanded(
-                      child: MoneyCardWidget(
-                        title: "0р",
-                        subtitle: "Выплачено",
-                      ),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Expanded(
-                      child: MoneyCardWidget(
-                        title: "0р",
-                        subtitle: "Просрочено",
-                      ),
-                    ),
-                  ],
-                ),
+            LoanConsole(
+              data: const [
+                {'Получено': '300р'},
+                {'Получено': '300р'},
+                {'Получено': '300р'},
+                {'Получено': '300р'},
               ],
+              show: showConsole,
             ),
             const SizedBox(
               height: 16,
@@ -99,9 +75,15 @@ class _GiveLoanScreenState extends State<GiveLoanScreen> with AutomaticKeepAlive
             SizedBox(
               width: double.infinity,
               child: RoundButtonWidget(
-                title: 'Предоставить займ',
+                title: 'Создать заявку',
                 enabled: true,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const CreateLoanScreen(),
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(
@@ -110,7 +92,7 @@ class _GiveLoanScreenState extends State<GiveLoanScreen> with AutomaticKeepAlive
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Список займов',
+                'Список инвестиций',
                 style: TextStyle(
                   color: kBlack,
                   fontSize: 12,
@@ -128,7 +110,7 @@ class _GiveLoanScreenState extends State<GiveLoanScreen> with AutomaticKeepAlive
                     title: 'Сортировка',
                     iconAssetPath: 'assets/sort.svg',
                     onPressed: () async {
-                      final sort = await showModalBottomSheet<GiveSortEnum>(
+                      final sort = await showModalBottomSheet<ReceiveSortEnum>(
                         context: context,
                         backgroundColor: kWhite,
                         shape: const RoundedRectangleBorder(
@@ -137,7 +119,8 @@ class _GiveLoanScreenState extends State<GiveLoanScreen> with AutomaticKeepAlive
                             topRight: Radius.circular(15),
                           ),
                         ),
-                        builder: (context) => const SortBottomSheetWidget(),
+                        builder: (context) =>
+                            const ReceiveSortBottomSheetWidget(),
                       );
                     },
                   ),
@@ -180,16 +163,19 @@ class _GiveLoanScreenState extends State<GiveLoanScreen> with AutomaticKeepAlive
             (i) => Container(
               width: double.infinity,
               margin: const EdgeInsets.only(bottom: 4),
-              child: GiveLoanCardWidget(
-                title: 'Ксения Трефилова, 22 года',
-                money: '291 200 р',
+              child: ReceiveLoanCardWidget(
+                title: 'Займ от 12.02.21',
+                money: '5000р',
                 percent: '2% в день',
-                durationInDays: 'на 6 месяцев',
-                rating: '4,7',
-                onPressed: () {},
-                deadLine: '29.04.2021',
-                income: '39 232 р',
-                subtitle: 'Официант',
+                durationInDays: 'на 14 дней',
+                deadline: 'погашение 21.05.21',
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const QuickLoanScreen(),
+                    ),
+                  );
+                },
               ),
             ),
           ),

@@ -3,9 +3,11 @@ import 'package:flutter_svg/svg.dart';
 
 class HideWidget extends StatefulWidget {
   final String title;
+  final Function(bool show) toogle;
   const HideWidget({
     Key? key,
     required this.title,
+    required this.toogle,
   }) : super(key: key);
 
   @override
@@ -29,6 +31,7 @@ class _HideWidgetState extends State<HideWidget> with TickerProviderStateMixin {
     super.initState();
   }
 
+  bool show = true;
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -42,6 +45,8 @@ class _HideWidgetState extends State<HideWidget> with TickerProviderStateMixin {
         } else {
           _controller.forward();
         }
+        show = !show;
+        widget.toogle(show);
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,

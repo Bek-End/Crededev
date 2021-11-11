@@ -1,7 +1,7 @@
 import 'package:credo_p2p/core/style/colors.dart';
 import 'package:credo_p2p/features/main_page/core/widgets/control_segment_widget.dart';
-import 'package:credo_p2p/features/main_page/give_loan/give_loan_screen.dart';
-import 'package:credo_p2p/features/main_page/receive_loan/receive_loan_screen.dart';
+import 'package:credo_p2p/features/main_page/give_loan/give_loan_main_page/give_loan_screen.dart';
+import 'package:credo_p2p/features/main_page/receive_loan/receive_loan_main_page/receive_loan_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

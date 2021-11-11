@@ -13,3 +13,5 @@ const kWhite = Color(0xFFFFFFFF);
 const kTrans = Colors.transparent;
 const kBlueLight = Color(0xFFE4F3FE);
 const kBlue = Color(0xFFC7E6FF);
+const kDarkBlue = Color(0xFF5DB0E7);
+const kDarkBlueOpacity = Color(0xFFc6e1f6);

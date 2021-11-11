@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:credo_p2p/core/style/colors.dart';
-import 'package:credo_p2p/features/main_page/receive_loan/data/filter_model.dart';
+import 'package:credo_p2p/features/main_page/receive_loan/receive_loan_main_page/data/filter_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

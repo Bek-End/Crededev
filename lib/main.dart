@@ -2,6 +2,8 @@ import 'package:credo_p2p/core/style/app_theme.dart';
 import 'package:credo_p2p/features/auth_local/presentation/ui/enter_pincode_screen.dart';
 import 'package:credo_p2p/features/auth_remote/presentation/ui/enter_phone_number_screen.dart';
 import 'package:credo_p2p/features/main_page/main_page.dart';
+import 'package:credo_p2p/features/main_page/receive_loan/create_loan/ui/create_loan_screen.dart';
+import 'package:credo_p2p/features/main_page/receive_loan/quick_loan/ui/quick_loan_screen.dart';
 import 'package:credo_p2p/features/onboarding/presentation/ui/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
