@@ -1,11 +1,11 @@
 import 'package:credo_p2p/core/style/colors.dart';
-import 'package:credo_p2p/features/main_page/core/widgets/control_segment_widget.dart';
-import 'package:credo_p2p/features/main_page/give_loan/give_loan_main_page/give_loan_screen.dart';
-import 'package:credo_p2p/features/main_page/receive_loan/receive_loan_main_page/receive_loan_screen.dart';
+import 'package:credo_p2p/features/all_loans/all_loans_screen.dart';
+import 'package:credo_p2p/features/analytics/ui/analytics_screen.dart';
+import 'package:credo_p2p/features/home/home_page_screen.dart';
+import 'package:credo_p2p/features/profile/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -21,64 +21,33 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kWhite,
-      body: SafeArea(
-        child: Center(
-          child: NestedScrollView(
-            headerSliverBuilder: (context, e) => [
-              SliverAppBar(
-                backgroundColor: Colors.transparent,
-                title: ControlSegmentWidget(
-                  receiveLoan: 'Получить займ',
-                  giveLoan: 'Выдать займ',
-                  onValueCnanged: (int? val) {
-                    if (val == 1) {
-                      setState(
-                        () {
-                          pageController.nextPage(
-                            duration: const Duration(
-                              milliseconds: 300,
-                            ),
-                            curve: Curves.easeIn,
-                          );
-                        },
-                      );
-                    } else {
-                      setState(
-                        () {
-                          pageController.previousPage(
-                            duration: const Duration(
-                              milliseconds: 500,
-                            ),
-                            curve: Curves.easeIn,
-                          );
-                        },
-                      );
-                    }
-                  },
-                ),
-              ),
-            ],
-            body: PageView(
-              controller: pageController,
-              physics: const NeverScrollableScrollPhysics(),
-              children: const [
-                ReceiveLoanScreen(),
-                GiveLoanScreen(),
-              ],
-            ),
-          ),
-        ),
+      body: PageView(
+        controller: pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: const [
+          HomePageScreen(),
+          AnalyticsScreen(),
+          AllLoansScreen(),
+          ProfileScreen(),
+        ],
       ),
       bottomNavigationBar: CupertinoTabBar(
         currentIndex: activeIndex,
         activeColor: kViolet,
         inactiveColor: kLightGrey,
         backgroundColor: kWhite,
-        onTap: (i) {
+        onTap: (i) async {
           setState(
             () {
               activeIndex = i;
             },
+          );
+          await pageController.animateToPage(
+            activeIndex,
+            duration: const Duration(
+              milliseconds: 300,
+            ),
+            curve: Curves.easeIn,
           );
         },
         items: [

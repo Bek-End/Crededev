@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 
 final ThemeData appThemeData = ThemeData(
   fontFamily: 'Montserrat',
+  textSelectionTheme: const TextSelectionThemeData(
+    cursorColor: kViolet,
+    selectionColor: kVioletVeryPale,
+  ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       textStyle: const TextStyle(
