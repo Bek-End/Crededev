@@ -1,6 +1,6 @@
 import 'package:credo_p2p/core/style/colors.dart';
 import 'package:credo_p2p/features/home/core/widgets/check_box_widget.dart';
-import 'package:credo_p2p/features/home/core/widgets/dismissable_banner.dart';
+import 'package:credo_p2p/core/widgets/dismissable_banner.dart';
 import 'package:credo_p2p/core/widgets/info_list.dart';
 import 'package:credo_p2p/features/home/core/widgets/round_button_enable_widget.dart';
 import 'package:credo_p2p/features/home/core/widgets/upper_app_bar_widget.dart';

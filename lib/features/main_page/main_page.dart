@@ -1,5 +1,5 @@
 import 'package:credo_p2p/core/style/colors.dart';
-import 'package:credo_p2p/features/all_loans/all_loans_screen.dart';
+import 'package:credo_p2p/features/all_loans/ui/all_loans_screen.dart';
 import 'package:credo_p2p/features/analytics/ui/analytics_screen.dart';
 import 'package:credo_p2p/features/home/home_page_screen.dart';
 import 'package:credo_p2p/features/profile/profile_screen.dart';

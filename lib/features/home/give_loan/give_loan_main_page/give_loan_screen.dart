@@ -1,6 +1,6 @@
 import 'package:credo_p2p/core/style/colors.dart';
+import 'package:credo_p2p/core/widgets/hide_widget.dart';
 import 'package:credo_p2p/core/widgets/round_button.dart';
-import 'package:credo_p2p/features/home/core/widgets/hide_widget.dart';
 import 'package:credo_p2p/features/home/core/widgets/loan_button_widget.dart';
 import 'package:credo_p2p/features/home/core/widgets/loan_console.dart';
 import 'package:credo_p2p/features/home/give_loan/lend_money/ui/lend_money_screen.dart';
@@ -48,8 +48,9 @@ class _GiveLoanScreenState extends State<GiveLoanScreen>
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                HideWidget(
+                AnimatedTextHideButton(
                   title: 'Свернуть',
+                  mini: true,
                   toogle: (e) {
                     setState(() {
                       showConsole = e;

@@ -48,7 +48,7 @@ class _DismissableBannerState extends State<DismissableBanner> {
                       ),
                       Positioned(
                         top: -17,
-                        right: -16,
+                        right: -17,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             primary: kDarkBlueOpacity,

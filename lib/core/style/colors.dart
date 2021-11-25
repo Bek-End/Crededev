@@ -17,3 +17,4 @@ const kDarkBlue = Color(0xFF5DB0E7);
 const kDarkBlueOpacity = Color(0xFFc6e1f6);
 const kChartBlue = Color(0xFFD8E4FF);
 const kRed = Color(0xFFBE0202);
+const kDarkViolet = Color(0xFF3A3379);
