@@ -6,14 +6,12 @@ class AnimatedTextHideButton extends StatefulWidget {
   final String title;
   final Function(bool show) toogle;
   final bool mini;
-  AnimationController? controller;
 
-  AnimatedTextHideButton({
+  const AnimatedTextHideButton({
     Key? key,
     required this.title,
     required this.toogle,
     required this.mini,
-    this.controller,
   }) : super(key: key);
 
   @override
@@ -22,20 +20,10 @@ class AnimatedTextHideButton extends StatefulWidget {
 
 class _AnimatedTextHideButtonState extends State<AnimatedTextHideButton>
     with TickerProviderStateMixin {
-  @override
-  void dispose() {
-    widget.controller!.dispose();
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    widget.controller ??= AnimationController(
-      duration: const Duration(milliseconds: 200),
-      vsync: this,
-    );
-    super.initState();
-  }
+  late final AnimationController controller = AnimationController(
+    duration: const Duration(milliseconds: 200),
+    vsync: this,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +32,11 @@ class _AnimatedTextHideButtonState extends State<AnimatedTextHideButton>
         padding: const EdgeInsets.only(left: 3, right: 3),
       ),
       onPressed: () {
-        widget.toogle(!widget.controller!.isCompleted);
-        if (widget.controller!.isCompleted) {
-          widget.controller!.reverse();
+        widget.toogle(controller.isCompleted);
+        if (controller.isCompleted) {
+          controller.reverse();
         } else {
-          widget.controller!.forward();
+          controller.forward();
         }
       },
       child: Row(
@@ -76,7 +64,7 @@ class _AnimatedTextHideButtonState extends State<AnimatedTextHideButton>
               width: 6,
             ),
           RotationTransition(
-            turns: Tween(begin: 0.0, end: 0.5).animate(widget.controller!),
+            turns: Tween(begin: 0.0, end: 0.5).animate(controller),
             child: SvgPicture.asset(
               'assets/Mask.svg',
               height: widget.mini ? 3 : 5,
