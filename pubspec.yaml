@@ -96,6 +96,8 @@ flutter:
     - assets/bottom_nav_bar/
     - assets/onboarding/
     - assets/login/
+    - assets/avatar/
+    - assets/profile/
 
   fonts:
     - family: Montserrat

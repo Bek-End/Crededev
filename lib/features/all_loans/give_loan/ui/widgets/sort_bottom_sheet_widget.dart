@@ -1,7 +1,6 @@
 import 'package:credo_p2p/core/style/colors.dart';
 import 'package:credo_p2p/core/widgets/round_button.dart';
 import 'package:flutter/material.dart';
-
 import '../../../core/widgets/bottom_sheet_button.dart';
 
 class AllLoansFilterGiveBottomSheetWidget extends StatefulWidget {

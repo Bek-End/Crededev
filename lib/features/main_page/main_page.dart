@@ -2,7 +2,7 @@ import 'package:credo_p2p/core/style/colors.dart';
 import 'package:credo_p2p/features/all_loans/ui/all_loans_screen.dart';
 import 'package:credo_p2p/features/analytics/ui/analytics_screen.dart';
 import 'package:credo_p2p/features/home/home_page_screen.dart';
-import 'package:credo_p2p/features/profile/profile_screen.dart';
+import 'package:credo_p2p/features/profile/ui/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

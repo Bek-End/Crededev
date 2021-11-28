@@ -1,3 +1,4 @@
+import 'package:credo_p2p/core/sliding_segmented_control_modified/sliding_segmented_control_modified.dart';
 import 'package:credo_p2p/core/style/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,6 @@ class ControlSegmentWidget extends StatefulWidget
   _ControlSegmentWidgetState createState() => _ControlSegmentWidgetState();
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
@@ -30,10 +30,10 @@ class _ControlSegmentWidgetState extends State<ControlSegmentWidget> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.only(left: 5,right: 5,top: 5),
+        padding: const EdgeInsets.only(left: 5, right: 5, top: 5),
         child: SizedBox(
           width: double.infinity,
-          child: CupertinoSlidingSegmentedControl<int>(
+          child: CupertinoSlidingSegmentedControlModified<int>(
             groupValue: groupValue,
             backgroundColor: kBlueLight,
             thumbColor: kBlue,

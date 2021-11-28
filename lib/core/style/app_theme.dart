@@ -41,5 +41,10 @@ final ThemeData appThemeData = ThemeData(
       fontSize: 10,
       fontWeight: FontWeight.w400,
     ),
+    button: TextStyle(
+      color: kWhite,
+      fontSize: 10,
+      fontWeight: FontWeight.w500,
+    ),
   ),
 );
