@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 
 import 'data/filter_model.dart';
 import 'widgets/filter_bottom_sheet/filter_bottom_sheet_widget.dart';
-import 'widgets/receive_loan_card_widget.dart';
+import '../../../../core/widgets/receive_loan_card_widget.dart';
 import 'widgets/sort_bottom_sheet/bottom_sheet_button.dart';
 
 class ReceiveLoanScreen extends StatefulWidget {

@@ -1,5 +1,8 @@
 import 'package:credo_p2p/core/style/app_theme.dart';
+import 'package:credo_p2p/features/home/home_page_screen.dart';
 import 'package:credo_p2p/features/main_page/main_page.dart';
+import 'package:credo_p2p/features/profile/all_applications/ui/all_applications_screen.dart';
+import 'package:credo_p2p/features/profile/notifications/ui/notifications_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';

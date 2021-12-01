@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-// ignore: must_be_immutable
 class AnimatedTextHideButton extends StatefulWidget {
   final String title;
   final Function(bool show) toogle;

@@ -1,4 +1,7 @@
 import 'package:credo_p2p/core/style/colors.dart';
+import 'package:credo_p2p/features/profile/all_applications/ui/all_applications_screen.dart';
+import 'package:credo_p2p/features/profile/my_cards/ui/my_cards_screen.dart';
+import 'package:credo_p2p/features/profile/notifications/ui/notifications_screen.dart';
 import 'package:credo_p2p/features/profile/ui/widgets/avatar_widget.dart';
 import 'package:credo_p2p/features/profile/ui/widgets/exit_button.dart';
 import 'package:credo_p2p/features/profile/ui/widgets/profile_attribute_button.dart';
@@ -81,7 +84,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Column(
                               children: [
                                 ProfileAttributeButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const NotificationsScreen(),
+                                      ),
+                                    );
+                                  },
                                   title: 'Уведомления',
                                   subtitle:
                                       'Уведомления о займах или инвестициях',
@@ -91,7 +101,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 6,
                                 ),
                                 ProfileAttributeButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const AllApplicationsScreen(),
+                                      ),
+                                    );
+                                  },
                                   title: 'Все заявки',
                                   subtitle:
                                       'Все активные заявки кредитора и заёмщика',
@@ -125,7 +142,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Column(
                               children: [
                                 ProfileAttributeButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const MyCardsScreen(),
+                                      ),
+                                    );
+                                  },
                                   title: 'Мои карты',
                                   subtitle: 'Счет заемщика или инвестора',
                                   assetPath: 'assets/profile/card.svg',
