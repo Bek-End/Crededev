@@ -1,20 +1,19 @@
 import 'package:credo_p2p/core/style/colors.dart';
 import 'package:credo_p2p/core/widgets/round_button.dart';
+import 'package:credo_p2p/features/all_loans/core/widgets/bottom_sheet_button.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/widgets/bottom_sheet_button.dart';
-
-class AllLoansFilterReceiveBottomSheetWidget extends StatefulWidget {
-  const AllLoansFilterReceiveBottomSheetWidget({Key? key}) : super(key: key);
+class OperationHistoryBottomSheet extends StatefulWidget {
+  const OperationHistoryBottomSheet({Key? key}) : super(key: key);
 
   @override
-  State<AllLoansFilterReceiveBottomSheetWidget> createState() =>
-      _AllLoansFilterReceiveBottomSheetWidgetState();
+  State<OperationHistoryBottomSheet> createState() =>
+      _OperationHistoryBottomSheetState();
 }
 
-class _AllLoansFilterReceiveBottomSheetWidgetState
-    extends State<AllLoansFilterReceiveBottomSheetWidget> {
-  AllLoansReceiveFilter sortEnum = AllLoansReceiveFilter.loans;
+class _OperationHistoryBottomSheetState
+    extends State<OperationHistoryBottomSheet> {
+  OperationHistoryFilter sortEnum = OperationHistoryFilter.loanBack;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,44 +39,44 @@ class _AllLoansFilterReceiveBottomSheetWidgetState
                 height: 20,
               ),
               BottomSheetButton(
-                title: 'Займы',
+                title: 'Выданные займы',
                 onPressed: (e) {
                   setState(() {
-                    sortEnum = e as AllLoansReceiveFilter;
+                    sortEnum = e as OperationHistoryFilter;
                   });
                 },
                 groupValue: sortEnum,
-                value: AllLoansReceiveFilter.loans,
+                value: OperationHistoryFilter.givenLoans,
               ),
               BottomSheetButton(
-                title: 'Выплаты',
+                title: 'Полученные займы',
                 onPressed: (e) {
                   setState(() {
-                    sortEnum = e as AllLoansReceiveFilter;
+                    sortEnum = e as OperationHistoryFilter;
                   });
                 },
                 groupValue: sortEnum,
-                value: AllLoansReceiveFilter.payments,
+                value: OperationHistoryFilter.receivedLoans,
               ),
               BottomSheetButton(
-                title: 'Просрочки',
+                title: 'Возврат займов',
                 onPressed: (e) {
                   setState(() {
-                    sortEnum = e as AllLoansReceiveFilter;
+                    sortEnum = e as OperationHistoryFilter;
                   });
                 },
                 groupValue: sortEnum,
-                value: AllLoansReceiveFilter.delays,
+                value: OperationHistoryFilter.loanBack,
               ),
               BottomSheetButton(
-                title: 'Выплаты просрочки',
+                title: 'Комиссию',
                 onPressed: (e) {
                   setState(() {
-                    sortEnum = e as AllLoansReceiveFilter;
+                    sortEnum = e as OperationHistoryFilter;
                   });
                 },
                 groupValue: sortEnum,
-                value: AllLoansReceiveFilter.paymentsDelays,
+                value: OperationHistoryFilter.comission,
               ),
             ],
           ),

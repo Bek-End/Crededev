@@ -3,12 +3,11 @@ import 'package:credo_p2p/core/widgets/app_bar_widget.dart';
 import 'package:credo_p2p/features/auth_local/domain/pincode.dart';
 import 'package:credo_p2p/features/auth_local/presentation/application/repeat_pincode_bloc/repeatpincode_bloc.dart';
 import 'package:credo_p2p/features/auth_local/presentation/ui/widgets/snack_widget.dart';
-import 'package:credo_p2p/features/auth_remote/presentation/ui/enter_phone_number_screen.dart';
 import 'package:credo_p2p/features/main_page/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../injection.dart';
-import 'widgets/pincode_widget.dart';
+import '../../../../core/widgets/pincode_widget.dart';
 
 class RepeatPincodeScreen extends StatefulWidget {
   final Pincode pincode;

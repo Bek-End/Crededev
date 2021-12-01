@@ -1,7 +1,10 @@
 import 'package:credo_p2p/core/style/colors.dart';
 import 'package:credo_p2p/features/profile/all_applications/ui/all_applications_screen.dart';
+import 'package:credo_p2p/features/profile/change_pin/ui/enter_old_pin_screen.dart';
+import 'package:credo_p2p/features/profile/faq/ui/faq_screen.dart';
 import 'package:credo_p2p/features/profile/my_cards/ui/my_cards_screen.dart';
 import 'package:credo_p2p/features/profile/notifications/ui/notifications_screen.dart';
+import 'package:credo_p2p/features/profile/operation_history/ui/operation_history_screen.dart';
 import 'package:credo_p2p/features/profile/ui/widgets/avatar_widget.dart';
 import 'package:credo_p2p/features/profile/ui/widgets/exit_button.dart';
 import 'package:credo_p2p/features/profile/ui/widgets/profile_attribute_button.dart';
@@ -118,7 +121,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 6,
                                 ),
                                 ProfileAttributeButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const OperationHistoryScreen(),
+                                      ),
+                                    );
+                                  },
                                   title: 'История операций',
                                   subtitle:
                                       'Все контракты кредитора и заёмщика',
@@ -180,7 +190,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: Column(
                               children: [
                                 ProfileAttributeButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => const EnterOldPinScreen(),
+                                      ),
+                                    );
+                                  },
                                   title: 'Сменить PIN-код',
                                   subtitle:
                                       'Сменить пароль для входа в приложение',
@@ -199,7 +215,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 6,
                                 ),
                                 ProfileAttributeButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => const FaqScreen(),
+                                      ),
+                                    );
+                                  },
                                   title: 'Вопрос-ответ',
                                   subtitle:
                                       'Все интересущие вас вопросы и ответы',

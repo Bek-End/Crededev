@@ -3,7 +3,7 @@ import 'package:credo_p2p/core/widgets/app_bar_with_title.dart';
 import 'package:credo_p2p/features/profile/add_card/ui/add_card_screen.dart';
 import 'package:credo_p2p/features/profile/my_cards/ui/widgets/bottom_info_sheet.dart';
 import 'package:credo_p2p/features/profile/my_cards/ui/widgets/custom_floating_action_button.dart';
-import 'package:credo_p2p/features/profile/my_cards/ui/widgets/transaction_list_tile.dart';
+import 'package:credo_p2p/core/widgets/transaction_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

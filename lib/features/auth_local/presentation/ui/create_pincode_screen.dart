@@ -6,7 +6,7 @@ import 'package:credo_p2p/features/auth_local/presentation/ui/repeat_pincode_scr
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../injection.dart';
-import 'widgets/pincode_widget.dart';
+import '../../../../core/widgets/pincode_widget.dart';
 
 class CreatePincodeScreen extends StatefulWidget {
   const CreatePincodeScreen({Key? key}) : super(key: key);

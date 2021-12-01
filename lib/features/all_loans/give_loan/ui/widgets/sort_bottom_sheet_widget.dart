@@ -38,7 +38,7 @@ class _AllLoansFilterGiveBottomSheetWidgetState
               const SizedBox(
                 height: 20,
               ),
-              GiveBottomSheetButton(
+              BottomSheetButton(
                 title: 'Займы',
                 onPressed: (e) {
                   setState(() {
@@ -48,7 +48,7 @@ class _AllLoansFilterGiveBottomSheetWidgetState
                 groupValue: sortEnum,
                 value: AllLoansGiveFilter.loans,
               ),
-              GiveBottomSheetButton(
+              BottomSheetButton(
                 title: 'Выплаты',
                 onPressed: (e) {
                   setState(() {
@@ -58,7 +58,7 @@ class _AllLoansFilterGiveBottomSheetWidgetState
                 groupValue: sortEnum,
                 value: AllLoansGiveFilter.payments,
               ),
-              GiveBottomSheetButton(
+              BottomSheetButton(
                 title: 'Просрочки',
                 onPressed: (e) {
                   setState(() {
@@ -68,7 +68,7 @@ class _AllLoansFilterGiveBottomSheetWidgetState
                 groupValue: sortEnum,
                 value: AllLoansGiveFilter.delays,
               ),
-              GiveBottomSheetButton(
+              BottomSheetButton(
                 title: 'Прибыль',
                 onPressed: (e) {
                   setState(() {

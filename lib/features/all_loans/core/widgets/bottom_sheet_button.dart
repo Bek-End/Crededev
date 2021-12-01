@@ -16,12 +16,19 @@ enum AllLoansGiveFilter {
   income,
 }
 
-class GiveBottomSheetButton extends StatelessWidget {
+enum OperationHistoryFilter{
+  givenLoans,
+  receivedLoans,
+  loanBack,
+  comission,
+}
+
+class BottomSheetButton extends StatelessWidget {
   final String title;
   final Function(Object sortEnum) onPressed;
   final Object groupValue;
   final Object value;
-  const GiveBottomSheetButton({
+  const BottomSheetButton({
     Key? key,
     required this.title,
     required this.onPressed,

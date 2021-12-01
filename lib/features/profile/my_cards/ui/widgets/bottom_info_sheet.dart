@@ -1,5 +1,5 @@
 import 'package:credo_p2p/core/style/colors.dart';
-import 'package:credo_p2p/features/profile/my_cards/ui/widgets/transaction_list_tile.dart';
+import 'package:credo_p2p/core/widgets/transaction_list_tile.dart';
 import 'package:flutter/material.dart';
 
 class BottomInfoSheet extends StatelessWidget {

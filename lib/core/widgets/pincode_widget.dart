@@ -24,7 +24,7 @@ class PincodeWidget extends StatelessWidget {
         maxHeight: 12,
       ),
       eachFieldMargin: const EdgeInsets.only(right: 7, left: 7),
-      selectedFieldDecoration: BoxDecoration(
+      selectedFieldDecoration: const BoxDecoration(
         color: kVioletPale,
         shape: BoxShape.circle,
       ),
