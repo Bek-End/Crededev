@@ -1,15 +1,11 @@
 import 'package:credo_p2p/core/style/app_theme.dart';
-import 'package:credo_p2p/features/home/home_page_screen.dart';
-import 'package:credo_p2p/features/main_page/main_page.dart';
-import 'package:credo_p2p/features/profile/all_applications/ui/all_applications_screen.dart';
-import 'package:credo_p2p/features/profile/change_pin/ui/enter_old_pin_screen.dart';
-import 'package:credo_p2p/features/profile/faq/ui/faq_screen.dart';
-import 'package:credo_p2p/features/profile/notifications/ui/notifications_screen.dart';
-import 'package:credo_p2p/features/profile/operation_history/ui/operation_history_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'core/bloc/pin_bloc/pin_bloc.dart';
+import 'features/auth_local/presentation/ui/enter_pincode_screen.dart';
+import 'features/auth_remote/presentation/ui/enter_phone_number_screen.dart';
+import 'features/onboarding/presentation/ui/onboarding_screen.dart';
 import 'injection.dart';
 
 // class MyHttpOverrides extends HttpOverrides {
@@ -77,12 +73,11 @@ class _MyAppState extends State<MyApp> {
               //       const EnterPhoneNumberScreen()
               // },
               // initialRoute: '/',
-              // home: hasToken
-              //     ? hasPin
-              //         ? EnterPincodeScreen()
-              //         : const EnterPhoneNumberScreen()
-              //     : const OnboardingScreen(),
-              home: const MainPage(),
+              home: hasToken
+                  ? hasPin
+                      ? EnterPincodeScreen()
+                      : const EnterPhoneNumberScreen()
+                  : const OnboardingScreen(),
             );
           }
         },

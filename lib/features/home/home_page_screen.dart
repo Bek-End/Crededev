@@ -24,6 +24,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
             headerSliverBuilder: (context, e) => [
               SliverAppBar(
                 backgroundColor: Colors.transparent,
+                automaticallyImplyLeading: false,
                 title: ControlSegmentWidget(
                   receiveLoan: 'Получить займ',
                   giveLoan: 'Выдать займ',

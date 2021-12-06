@@ -23,6 +23,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
             headerSliverBuilder: (context, e) => [
               SliverAppBar(
                 backgroundColor: kTrans,
+                automaticallyImplyLeading: false,
                 title: ControlSegmentWidget(
                   receiveLoan: 'Получить займ',
                   giveLoan: 'Выдать займ',
