@@ -19,6 +19,9 @@ class ServerFailure extends Failure {
   const ServerFailure({required final this.error, required final this.stack});
   @override
   List<Object?> get props => [];
+
+  @override
+  String toString() => 'ServerFailure(error: $error, stack: $stack)';
 }
 
 class CacheFailure extends Failure {

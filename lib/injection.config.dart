@@ -10,8 +10,8 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:local_auth/local_auth.dart' as _i5;
 
-import 'core/bloc/pin_bloc/pin_bloc.dart' as _i28;
-import 'core/injectable_helpers/injectable_modules.dart' as _i35;
+import 'core/bloc/pin_bloc/pin_bloc.dart' as _i34;
+import 'core/injectable_helpers/injectable_modules.dart' as _i42;
 import 'core/network/network_info.dart' as _i7;
 import 'core/network/network_info_impl.dart' as _i8;
 import 'features/auth_local/data/local_authentication_service.dart' as _i6;
@@ -48,16 +48,27 @@ import 'features/auth_remote/data/datasources/sign_up/implementations/auth_remot
 import 'features/auth_remote/data/datasources/sign_up/implementations/auth_remote_sign_up_impl.dart'
     as _i25;
 import 'features/auth_remote/data/repositories/auth_remote_repo_impl.dart'
-    as _i30;
-import 'features/auth_remote/domain/repositories/auth_remote_repo.dart' as _i29;
+    as _i36;
+import 'features/auth_remote/domain/repositories/auth_remote_repo.dart' as _i35;
 import 'features/auth_remote/domain/usecases/enter_with_phone_number.dart'
-    as _i31;
+    as _i37;
 import 'features/auth_remote/domain/usecases/enter_with_phone_number_and_code.dart'
-    as _i32;
+    as _i38;
 import 'features/auth_remote/presentation/application/entercode_bloc.dart/entercode_bloc.dart'
-    as _i33;
+    as _i39;
 import 'features/auth_remote/presentation/application/entrphonenumber_bloc/enterphonenumber_bloc.dart'
-    as _i34;
+    as _i40;
+import 'features/profile/faq/application/faq_bloc.dart' as _i41;
+import 'features/profile/faq/data/datasources/local/faq_local_repo.dart'
+    as _i28;
+import 'features/profile/faq/data/datasources/local/faq_local_repo_impl.dart'
+    as _i29;
+import 'features/profile/faq/data/datasources/remote/faq_remote_repo.dart'
+    as _i30;
+import 'features/profile/faq/data/datasources/remote/faq_remote_repo_impl.dart'
+    as _i31;
+import 'features/profile/faq/data/repository/faq_repo_impl.dart' as _i33;
+import 'features/profile/faq/domain/repository/faq_repo.dart' as _i32;
 import 'features/token/token_handler.dart' as _i12;
 import 'features/token/token_handler_impl.dart'
     as _i13; // ignore_for_file: unnecessary_lambdas
@@ -79,8 +90,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       _i10.PincodeHandlerImpl(secureStorage: get<_i4.FlutterSecureStorage>()));
   gh.factory<_i11.RepeatpincodeBloc>(
       () => _i11.RepeatpincodeBloc(get<_i9.PincodeHandler>()));
-  gh.lazySingleton<_i12.TokenHandler>(() =>
-      _i13.TokenHandlerImpl(secureStorage: get<_i4.FlutterSecureStorage>()));
+  gh.lazySingleton<_i12.TokenHandler>(() => _i13.TokenHandlerImpl(
+      secureStorage: get<_i4.FlutterSecureStorage>(), dio: get<_i3.Dio>()));
   gh.lazySingleton<_i14.AuthRemoteConfirmSignUp>(
       () => _i15.AuthRemoteSignUpImpl(dio: get<_i3.Dio>()));
   gh.lazySingleton<_i16.AuthRemoteRefreshToken>(
@@ -97,9 +108,17 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i26.CreatepincodeBloc(get<_i9.PincodeHandler>()));
   gh.factory<_i27.EnterpincodeBloc>(
       () => _i27.EnterpincodeBloc(get<_i9.PincodeHandler>()));
-  gh.factory<_i28.PinBloc>(
-      () => _i28.PinBloc(get<_i9.PincodeHandler>(), get<_i12.TokenHandler>()));
-  gh.lazySingleton<_i29.AuthRemoteRepo>(() => _i30.AuthRemoteRepoImpl(
+  gh.lazySingleton<_i28.FaqLocalRepo>(() =>
+      _i29.FaqLocalRepoImpl(secureStorage: get<_i4.FlutterSecureStorage>()));
+  gh.lazySingleton<_i30.FaqRemoteRepo>(() => _i31.FaqRemoteRepoImpl(
+      dio: get<_i3.Dio>(), tokenHandler: get<_i12.TokenHandler>()));
+  gh.lazySingleton<_i32.FaqRepo>(() => _i33.FaqRepoImpl(
+      localRepo: get<_i28.FaqLocalRepo>(),
+      remoteRepo: get<_i30.FaqRemoteRepo>(),
+      networkInfo: get<_i7.NetworkInfo>()));
+  gh.factory<_i34.PinBloc>(
+      () => _i34.PinBloc(get<_i9.PincodeHandler>(), get<_i12.TokenHandler>()));
+  gh.lazySingleton<_i35.AuthRemoteRepo>(() => _i36.AuthRemoteRepoImpl(
       networkInfo: get<_i7.NetworkInfo>(),
       tokenHandler: get<_i12.TokenHandler>(),
       refreshToken: get<_i16.AuthRemoteRefreshToken>(),
@@ -108,17 +127,18 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       signOut: get<_i22.AuthRemoteSignOut>(),
       signUp: get<_i24.AuthRemoteSignUp>(),
       confirmSignUp: get<_i14.AuthRemoteConfirmSignUp>()));
-  gh.lazySingleton<_i31.EnterWithPhoneNumber>(
-      () => _i31.EnterWithPhoneNumber(repo: get<_i29.AuthRemoteRepo>()));
-  gh.lazySingleton<_i32.EnterWithPhoneNumberAndCode>(
-      () => _i32.EnterWithPhoneNumberAndCode(repo: get<_i29.AuthRemoteRepo>()));
-  gh.factory<_i33.EntercodeBloc>(() => _i33.EntercodeBloc(
-      get<_i32.EnterWithPhoneNumberAndCode>(),
-      get<_i31.EnterWithPhoneNumber>(),
+  gh.lazySingleton<_i37.EnterWithPhoneNumber>(
+      () => _i37.EnterWithPhoneNumber(repo: get<_i35.AuthRemoteRepo>()));
+  gh.lazySingleton<_i38.EnterWithPhoneNumberAndCode>(
+      () => _i38.EnterWithPhoneNumberAndCode(repo: get<_i35.AuthRemoteRepo>()));
+  gh.factory<_i39.EntercodeBloc>(() => _i39.EntercodeBloc(
+      get<_i38.EnterWithPhoneNumberAndCode>(),
+      get<_i37.EnterWithPhoneNumber>(),
       get<_i9.PincodeHandler>()));
-  gh.factory<_i34.EnterphonenumberBloc>(() => _i34.EnterphonenumberBloc(
-      enterWithPhoneNumber: get<_i31.EnterWithPhoneNumber>()));
+  gh.factory<_i40.EnterphonenumberBloc>(() => _i40.EnterphonenumberBloc(
+      enterWithPhoneNumber: get<_i37.EnterWithPhoneNumber>()));
+  gh.factory<_i41.FaqBloc>(() => _i41.FaqBloc(get<_i32.FaqRepo>()));
   return get;
 }
 
-class _$InjectableModule extends _i35.InjectableModule {}
+class _$InjectableModule extends _i42.InjectableModule {}

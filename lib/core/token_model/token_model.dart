@@ -9,9 +9,9 @@ class TokenModel {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['data'] = data.toJson();
-    return _data;
+    return {
+      "data": data.toJson(),
+    };
   }
 
   @override
@@ -32,10 +32,10 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['access_token'] = accessToken;
-    _data['refresh_token'] = refreshToken.toJson();
-    return _data;
+    return {
+      "access_token": accessToken,
+      "refresh_token": refreshToken.toJson(),
+    };
   }
 
   @override
@@ -57,9 +57,9 @@ class RefreshToken {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['token'] = token;
-    _data['expires_at'] = expiresAt;
-    return _data;
+    return {
+      "token": token,
+      "expires_at": expiresAt,
+    };
   }
 }

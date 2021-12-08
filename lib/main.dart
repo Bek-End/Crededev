@@ -67,12 +67,6 @@ class _MyAppState extends State<MyApp> {
               title: 'Credo P2P',
               debugShowCheckedModeBanner: false,
               theme: appThemeData,
-              // routes: {
-              //   OnboardingScreen.route: (context) => const OnboardingScreen(),
-              //   EnterPhoneNumberScreen.route: (context) =>
-              //       const EnterPhoneNumberScreen()
-              // },
-              // initialRoute: '/',
               home: hasToken
                   ? hasPin
                       ? EnterPincodeScreen()
