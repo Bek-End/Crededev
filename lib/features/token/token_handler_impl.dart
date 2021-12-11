@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:credo_p2p/core/errors/exceptions.dart';
 import 'package:credo_p2p/core/logger/logger_impl.dart';
 import 'package:credo_p2p/core/token_model/token_model.dart';
@@ -65,5 +64,10 @@ class TokenHandlerImpl implements TokenHandler {
         logger.e(e);
       }
     }
+  }
+
+  @override
+  Future<void> deleteToken() async {
+    await secureStorage.delete(key: tokenSecureStorage);
   }
 }

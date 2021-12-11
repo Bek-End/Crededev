@@ -5,4 +5,5 @@ abstract class TokenHandler {
   Future<TokenModel> getToken();
   Future<bool> hasToken();
   Future<TokenModel?> refreshToken();
+  Future<void> deleteToken();
 }

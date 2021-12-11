@@ -7,10 +7,9 @@ import 'package:credo_p2p/features/home/receive_loan/create_loan/ui/create_loan_
 import 'package:credo_p2p/features/home/receive_loan/quick_loan/ui/quick_loan_screen.dart';
 import 'package:credo_p2p/features/home/receive_loan/receive_loan_main_page/widgets/sort_bottom_sheet/sort_bottom_sheet_widget.dart';
 import 'package:flutter/material.dart';
-
+import '../../../../core/widgets/receive_loan_card_widget.dart';
 import 'data/filter_model.dart';
 import 'widgets/filter_bottom_sheet/filter_bottom_sheet_widget.dart';
-import '../../../../core/widgets/receive_loan_card_widget.dart';
 import 'widgets/sort_bottom_sheet/bottom_sheet_button.dart';
 
 class ReceiveLoanScreen extends StatefulWidget {
