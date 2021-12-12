@@ -3,7 +3,7 @@ import 'package:credo_p2p/core/widgets/control_segment_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'give_loan/give_loan_main_page/give_loan_screen.dart';
-import 'receive_loan/receive_loan_main_page/receive_loan_screen.dart';
+import 'receive_loan/receive_loan_main_page/ui/receive_loan_screen.dart';
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({Key? key}) : super(key: key);

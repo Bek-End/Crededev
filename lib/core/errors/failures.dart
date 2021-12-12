@@ -24,6 +24,11 @@ class ServerFailure extends Failure {
   String toString() => 'ServerFailure(error: $error, stack: $stack)';
 }
 
+class NoCardAddedFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
+
 class CacheFailure extends Failure {
   const CacheFailure();
   @override

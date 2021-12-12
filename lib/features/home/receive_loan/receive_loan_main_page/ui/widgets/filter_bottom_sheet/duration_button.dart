@@ -1,15 +1,14 @@
 import 'dart:ui';
 import 'package:credo_p2p/core/style/colors.dart';
-import 'package:credo_p2p/features/home/receive_loan/receive_loan_main_page/data/filter_model.dart';
+import 'package:credo_p2p/features/home/core/data/models/filter_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-class FilterRatingButton extends StatelessWidget {
-  final Function(Rating rating) onPressed;
+class LoanDurationButton extends StatelessWidget {
+  final Function(LoanDuration loanDuration) onPressed;
   final String title;
-  final Rating groupValue;
-  final Rating value;
-  const FilterRatingButton({
+  final LoanDuration groupValue;
+  final LoanDuration value;
+  const LoanDurationButton({
     Key? key,
     required this.onPressed,
     required this.title,
@@ -22,7 +21,10 @@ class FilterRatingButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         primary: groupValue == value ? kBlue : kVioletPale,
-        padding: EdgeInsets.zero,
+        padding: const EdgeInsets.symmetric(
+          vertical: 7,
+          horizontal: 10,
+        ),
         onPrimary: kBlue,
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -31,7 +33,7 @@ class FilterRatingButton extends StatelessWidget {
       ),
       onPressed: () {
         if (groupValue == value) {
-          onPressed(Rating.none);
+          onPressed(LoanDuration.none);
         } else {
           onPressed(value);
         }
@@ -39,10 +41,6 @@ class FilterRatingButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset('assets/star.svg'),
-          const SizedBox(
-            width: 2,
-          ),
           Text(
             title,
             style: const TextStyle(

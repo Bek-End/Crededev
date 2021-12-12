@@ -71,6 +71,9 @@ dependencies:
   #For internet connection handler
   retry: ^3.1.0
 
+  #For shimmer effect while waiting server response
+  shimmer: ^2.0.0
+
   #For stacked coumn charts
   syncfusion_flutter_charts: ^19.3.54
   

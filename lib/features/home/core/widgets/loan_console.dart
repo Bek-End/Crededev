@@ -1,3 +1,4 @@
+import 'package:credo_p2p/features/home/core/widgets/money_card_shimmer.dart';
 import 'package:flutter/material.dart';
 
 import 'money_card_widget.dart';
@@ -5,10 +6,12 @@ import 'money_card_widget.dart';
 class LoanConsole extends StatefulWidget {
   final List<Map<String, String>> data;
   final bool show;
+  final bool isLoading;
   const LoanConsole({
     Key? key,
     required this.data,
     required this.show,
+    required this.isLoading,
   }) : super(key: key);
 
   @override
@@ -41,19 +44,23 @@ class _LoanConsoleState extends State<LoanConsole> {
             Row(
               children: [
                 Expanded(
-                  child: MoneyCardWidget(
-                    title: widget.data[0].values.toList()[0],
-                    subtitle: widget.data[0].keys.toList()[0],
-                  ),
+                  child: widget.isLoading
+                      ? const MoneyCardShimmerWidget()
+                      : MoneyCardWidget(
+                          title: widget.data[0].values.toList()[0],
+                          subtitle: widget.data[0].keys.toList()[0],
+                        ),
                 ),
                 const SizedBox(
                   width: 8,
                 ),
                 Expanded(
-                  child: MoneyCardWidget(
-                    title: widget.data[1].values.toList()[0],
-                    subtitle: widget.data[1].keys.toList()[0],
-                  ),
+                  child: widget.isLoading
+                      ? const MoneyCardShimmerWidget()
+                      : MoneyCardWidget(
+                          title: widget.data[1].values.toList()[0],
+                          subtitle: widget.data[1].keys.toList()[0],
+                        ),
                 ),
               ],
             ),
@@ -63,19 +70,23 @@ class _LoanConsoleState extends State<LoanConsole> {
             Row(
               children: [
                 Expanded(
-                  child: MoneyCardWidget(
-                    title: widget.data[2].values.toList()[0],
-                    subtitle: widget.data[2].keys.toList()[0],
-                  ),
+                  child: widget.isLoading
+                      ? const MoneyCardShimmerWidget()
+                      : MoneyCardWidget(
+                          title: widget.data[2].values.toList()[0],
+                          subtitle: widget.data[2].keys.toList()[0],
+                        ),
                 ),
                 const SizedBox(
                   width: 8,
                 ),
                 Expanded(
-                  child: MoneyCardWidget(
-                    title: widget.data[3].values.toList()[0],
-                    subtitle: widget.data[3].keys.toList()[0],
-                  ),
+                  child: widget.isLoading
+                      ? const MoneyCardShimmerWidget()
+                      : MoneyCardWidget(
+                          title: widget.data[3].values.toList()[0],
+                          subtitle: widget.data[3].keys.toList()[0],
+                        ),
                 ),
               ],
             ),

@@ -1,37 +1,36 @@
 import 'dart:io';
 import 'package:credo_p2p/core/errors/exceptions.dart';
-import 'package:credo_p2p/features/profile/faq/data/datasources/remote/faq_remote_repo.dart';
-import 'package:credo_p2p/features/profile/faq/data/models/faq_model.dart';
-import 'package:credo_p2p/features/profile/faq/domain/entities/faq.dart';
+import 'package:credo_p2p/core/logger/logger_impl.dart';
+import 'package:credo_p2p/features/home/core/data/datasources/remote_data_source_repo.dart';
 import 'package:credo_p2p/features/token/token_handler.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-const faqUrl = "https://api.credo.dev.galament.net/faq";
+const mainInfoUrl = "https://api.credo.dev.galament.net/main/info";
 
-@LazySingleton(as: FaqRemoteRepo)
-class FaqRemoteRepoImpl implements FaqRemoteRepo {
+@LazySingleton(as: RemoteDataSourceRepo)
+class RemoteDataSourceRepoImpl implements RemoteDataSourceRepo {
   final Dio dio;
   final TokenHandler tokenHandler;
-  FaqRemoteRepoImpl({
+  RemoteDataSourceRepoImpl({
     required this.dio,
     required this.tokenHandler,
   });
   @override
-  Future<List<Faq>> getFaqs() async {
+  Future<Response> getMainInfo() async {
     final access = await tokenHandler.getToken();
     final headers = {'Authorization': 'Bearer ${access.data.accessToken}'};
     dio.options.headers = headers;
     try {
-      final res = await dio.get(faqUrl);
-      final faq = FaqData.fromJson(res.data);
-      return faq.faqs;
+      final res = await dio.get(mainInfoUrl);
+      return res;
     } on DioError catch (e) {
       if (e.response!.statusCode == HttpStatus.unauthorized) {
         final newToken = await tokenHandler.refreshToken();
         await tokenHandler.saveToken(token: newToken!);
-        return getFaqs();
+        return getMainInfo();
       } else {
+        logger.e(e.response!.data);
         throw ServerException(
           error: e.error.toString(),
           stack: e.response!.data.toString(),

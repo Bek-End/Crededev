@@ -11,7 +11,7 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:local_auth/local_auth.dart' as _i5;
 
 import 'core/bloc/pin_bloc/pin_bloc.dart' as _i34;
-import 'core/injectable_helpers/injectable_modules.dart' as _i42;
+import 'core/injectable_helpers/injectable_modules.dart' as _i49;
 import 'core/network/network_info.dart' as _i7;
 import 'core/network/network_info_impl.dart' as _i8;
 import 'features/auth_local/data/local_authentication_service.dart' as _i6;
@@ -48,17 +48,28 @@ import 'features/auth_remote/data/datasources/sign_up/implementations/auth_remot
 import 'features/auth_remote/data/datasources/sign_up/implementations/auth_remote_sign_up_impl.dart'
     as _i25;
 import 'features/auth_remote/data/repositories/auth_remote_repo_impl.dart'
-    as _i36;
-import 'features/auth_remote/domain/repositories/auth_remote_repo.dart' as _i35;
-import 'features/auth_remote/domain/usecases/enter_with_phone_number.dart'
-    as _i37;
-import 'features/auth_remote/domain/usecases/enter_with_phone_number_and_code.dart'
     as _i38;
-import 'features/auth_remote/presentation/application/entercode_bloc.dart/entercode_bloc.dart'
+import 'features/auth_remote/domain/repositories/auth_remote_repo.dart' as _i37;
+import 'features/auth_remote/domain/usecases/enter_with_phone_number.dart'
     as _i39;
-import 'features/auth_remote/presentation/application/entrphonenumber_bloc/enterphonenumber_bloc.dart'
+import 'features/auth_remote/domain/usecases/enter_with_phone_number_and_code.dart'
     as _i40;
-import 'features/profile/faq/application/faq_bloc.dart' as _i41;
+import 'features/auth_remote/presentation/application/entercode_bloc.dart/entercode_bloc.dart'
+    as _i41;
+import 'features/auth_remote/presentation/application/entrphonenumber_bloc/enterphonenumber_bloc.dart'
+    as _i42;
+import 'features/home/core/data/datasources/remote_data_source_impl.dart'
+    as _i36;
+import 'features/home/core/data/datasources/remote_data_source_repo.dart'
+    as _i35;
+import 'features/home/core/data/repository/loan_repo_impl.dart' as _i46;
+import 'features/home/core/domain/entities/loan_main_info.dart' as _i45;
+import 'features/home/core/domain/repository/loan_repo.dart' as _i44;
+import 'features/home/give_loan/give_loan_main_page/application/giveloanmainpage_bloc.dart'
+    as _i48;
+import 'features/home/receive_loan/receive_loan_main_page/application/receiveloanmainpage_bloc.dart'
+    as _i47;
+import 'features/profile/faq/application/faq_bloc.dart' as _i43;
 import 'features/profile/faq/data/datasources/local/faq_local_repo.dart'
     as _i28;
 import 'features/profile/faq/data/datasources/local/faq_local_repo_impl.dart'
@@ -118,7 +129,10 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       networkInfo: get<_i7.NetworkInfo>()));
   gh.factory<_i34.PinBloc>(
       () => _i34.PinBloc(get<_i9.PincodeHandler>(), get<_i12.TokenHandler>()));
-  gh.lazySingleton<_i35.AuthRemoteRepo>(() => _i36.AuthRemoteRepoImpl(
+  gh.lazySingleton<_i35.RemoteDataSourceRepo>(() =>
+      _i36.RemoteDataSourceRepoImpl(
+          dio: get<_i3.Dio>(), tokenHandler: get<_i12.TokenHandler>()));
+  gh.lazySingleton<_i37.AuthRemoteRepo>(() => _i38.AuthRemoteRepoImpl(
       networkInfo: get<_i7.NetworkInfo>(),
       tokenHandler: get<_i12.TokenHandler>(),
       refreshToken: get<_i16.AuthRemoteRefreshToken>(),
@@ -127,18 +141,25 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       signOut: get<_i22.AuthRemoteSignOut>(),
       signUp: get<_i24.AuthRemoteSignUp>(),
       confirmSignUp: get<_i14.AuthRemoteConfirmSignUp>()));
-  gh.lazySingleton<_i37.EnterWithPhoneNumber>(
-      () => _i37.EnterWithPhoneNumber(repo: get<_i35.AuthRemoteRepo>()));
-  gh.lazySingleton<_i38.EnterWithPhoneNumberAndCode>(
-      () => _i38.EnterWithPhoneNumberAndCode(repo: get<_i35.AuthRemoteRepo>()));
-  gh.factory<_i39.EntercodeBloc>(() => _i39.EntercodeBloc(
-      get<_i38.EnterWithPhoneNumberAndCode>(),
-      get<_i37.EnterWithPhoneNumber>(),
+  gh.lazySingleton<_i39.EnterWithPhoneNumber>(
+      () => _i39.EnterWithPhoneNumber(repo: get<_i37.AuthRemoteRepo>()));
+  gh.lazySingleton<_i40.EnterWithPhoneNumberAndCode>(
+      () => _i40.EnterWithPhoneNumberAndCode(repo: get<_i37.AuthRemoteRepo>()));
+  gh.factory<_i41.EntercodeBloc>(() => _i41.EntercodeBloc(
+      get<_i40.EnterWithPhoneNumberAndCode>(),
+      get<_i39.EnterWithPhoneNumber>(),
       get<_i9.PincodeHandler>()));
-  gh.factory<_i40.EnterphonenumberBloc>(() => _i40.EnterphonenumberBloc(
-      enterWithPhoneNumber: get<_i37.EnterWithPhoneNumber>()));
-  gh.factory<_i41.FaqBloc>(() => _i41.FaqBloc(get<_i32.FaqRepo>()));
+  gh.factory<_i42.EnterphonenumberBloc>(() => _i42.EnterphonenumberBloc(
+      enterWithPhoneNumber: get<_i39.EnterWithPhoneNumber>()));
+  gh.factory<_i43.FaqBloc>(() => _i43.FaqBloc(get<_i32.FaqRepo>()));
+  gh.lazySingleton<_i44.LoanRepo<_i45.LoanMainInfo>>(() => _i46.LoanRepoImpl(
+      dataSourceRepo: get<_i35.RemoteDataSourceRepo>(),
+      networkInfo: get<_i7.NetworkInfo>()));
+  gh.factory<_i47.ReceiveloanmainpageBloc>(() =>
+      _i47.ReceiveloanmainpageBloc(get<_i44.LoanRepo<_i45.LoanMainInfo>>()));
+  gh.factory<_i48.GiveloanmainpageBloc>(
+      () => _i48.GiveloanmainpageBloc(get<_i44.LoanRepo<_i45.LoanMainInfo>>()));
   return get;
 }
 
-class _$InjectableModule extends _i42.InjectableModule {}
+class _$InjectableModule extends _i49.InjectableModule {}
